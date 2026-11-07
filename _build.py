@@ -10,22 +10,22 @@ YT='POn3cG_RTKs'
 SPREAKER='https://www.spreaker.com/episode/episode-330-michael-lapenna-on-his-book-baby-jesus-is-missing-october-13-2026--75766588'
 
 BOOKS=[
- dict(n=1,slug='baby-jesus-is-missing',title='Baby Jesus Is Missing',short='A Christmas mystery',pub='Ambassador International',year='2020',
+ dict(n=1,slug='baby-jesus-is-missing',pages='44 pages',age='5 to 12',formats='Hardcover, Kindle',title='Baby Jesus Is Missing',short='A Christmas mystery',pub='Ambassador International',year='2020',
   details=['Hardcover, 44 pages','Illustrated by Chris Jackson','Reading age 5 to 12'],
   cover='cover-baby-jesus-is-missing.jpg',w=700,h=1144,
   sum='Early in December, Nativity figures begin disappearing across Reedy River. When a $500 reward is offered for catching the thief, Catherine and Susanna Mae decide to investigate. What begins as a Christmas mystery soon becomes a test of their judgment.',
   buy=[('Amazon',AMZ+'1620209330'),('Barnes &amp; Noble','https://www.barnesandnoble.com/w/baby-jesus-is-missing-michael-lapenna/1138393399?ean=9781620209332'),('Publisher','https://ambassador-international.com/books/baby-jesus-is-missing/')]),
- dict(n=2,slug='the-offering',title='The Offering',short='A mountain adventure',pub='Ambassador International',year='2023',
+ dict(n=2,slug='the-offering',pages='62 pages',age='4 to 8',formats='Paperback',title='The Offering',short='A mountain adventure',pub='Ambassador International',year='2023',
   details=['Paperback, 62 pages','Reading age 4 to 8'],
   cover='cover-the-offering.jpg',w=700,h=1000,
   sum='While visiting their grandparents in the mountains, Catherine and Susanna Mae discover a rusted tin full of money. Then their border collie, Atticus, chases a bear cub into woods their grandfather has warned them to avoid. Should they obey his warning or go after their dog?',
   buy=[('Amazon',AMZ+'1649603126'),('Barnes &amp; Noble','https://www.barnesandnoble.com/w/the-offering-michael-lapenna/1143777727?ean=9781649605870'),('Publisher','https://ambassador-international.com/books/the-offering/')]),
- dict(n=3,slug='angelina-grace',title='Angelina Grace',short='An autumn mystery',pub='Ambassador International',year='2025',
+ dict(n=3,slug='angelina-grace',pages='164 pages',age='8 to 12',formats='Paperback',title='Angelina Grace',short='An autumn mystery',pub='Ambassador International',year='2025',
   details=['Paperback, 164 pages','Reading age 8 to 12'],
   cover='cover-angelina-grace.jpg',w=700,h=1130,
   sum='One autumn afternoon, Catherine meets Ulga, a young woman living alone in a secluded hollow outside town. As the sisters get to know her, they begin to wonder about her circumstances and what they can do to help her stay safe.',
   buy=[('Amazon',AMZ+'1649606133'),('Publisher','https://ambassador-international.com/books/angelina-grace/')]),
- dict(n=4,slug='lauras-locker',title='Laura’s Locker',short='A story about telling the truth',pub='En Route Books and Media',year='2026',
+ dict(n=4,slug='lauras-locker',pages='191 pages',age='Not listed',formats='Paperback, Kindle, Audible',title='Laura’s Locker',short='A story about telling the truth',pub='En Route Books and Media',year='2026',
   details=['Paperback, 191 pages','Kindle and Audible'],
   cover='cover-lauras-locker.jpg',w=666,h=1000,
   sum='Susanna Mae sees a classmate framed for cheating. She knows what happened, but speaking up could cost her a friendship. During a visit to her grandparents in Gloucester, Massachusetts, she encounters mysterious woods and old legends. Back at school, the harder challenge remains.',
@@ -49,7 +49,18 @@ VISITS=[
  ('store','Bookstores','In-store readings and book signings for local readers.'),
 ]
 
+import json as _json
+ISBN={'baby-jesus-is-missing':'9781620209332','the-offering':'9781649603128','angelina-grace':'9781649606136','lauras-locker':'9798888706558'}
+BASE='https://liquid1188.github.io/michael-lapenna/'
+def ld(fname):
+    person={"@type":"Person","@id":BASE+"#michael","name":"Michael LaPenna","jobTitle":"Author","url":BASE,"image":BASE+"assets/michael-lapenna.jpg","alumniOf":[{"@type":"CollegeOrUniversity","name":"Colby College"},{"@type":"CollegeOrUniversity","name":"Salem State University"}]}
+    if fname=='books.html':
+        g=[person]+[{"@type":"Book","name":b['title'].replace('’',"'"),"author":{"@id":BASE+"#michael"},"isbn":ISBN[b['slug']],"datePublished":b['year'],"publisher":{"@type":"Organization","name":b['pub']},"image":BASE+"assets/"+b['cover'],"bookFormat":"https://schema.org/Paperback" if 'Hardcover' not in b['details'][0] else "https://schema.org/Hardcover"} for b in BOOKS]
+    else: g=[person]
+    return '<script type="application/ld+json">'+_json.dumps({"@context":"https://schema.org","@graph":g})+'</script>'
+
 def page(fname,title,desc,body):
+    LD=ld(fname)
     nav=''.join(f'<li><a href="{h}"{" aria-current=\"page\"" if h==fname else ""}>{t}</a></li>' for h,t in NAV)
     return f'''<!DOCTYPE html>
 <html lang="en">
@@ -62,7 +73,9 @@ def page(fname,title,desc,body):
 <meta name="robots" content="noindex">
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
-<meta property="og:image" content="assets/cover-lauras-locker.jpg">
+<meta property="og:image" content="https://liquid1188.github.io/michael-lapenna/assets/og-card.jpg">
+<meta name="twitter:card" content="summary_large_image">
+{LD}
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
@@ -79,14 +92,13 @@ def page(fname,title,desc,body):
 {body}
 </main>
 <footer>
-  <div class="f-strip"><div class="wrap">
-    <div><b class="f-name">Michael LaPenna</b><p>Author of the LaRosa Sisters mystery series for young readers.</p></div>
-    <div class="f-ctas"><a class="btn gold sm" href="books.html">Get the books</a><a class="btn ghost-light sm" href="contact.html?topic=visit">Invite Michael</a></div>
-  </div></div>
-  <div class="wrap">
-    <ul class="f-nav">{''.join(f'<li><a href="{h}">{t}</a></li>' for h,t in NAV)}</ul>
-    <div class="f-base"><span>© 2026 Michael LaPenna</span><button type="button" class="vp-toggle">View desktop version</button><a href="https://lickitysplitweb.com" target="_blank" rel="noopener">Site by Lickity Split Web Design</a></div>
+  <div class="wrap f-cols">
+    <div><h3>Explore</h3><ul>{''.join(f'<li><a href="{h}">{t}</a></li>' for h,t in NAV)}</ul></div>
+    <div><h3>The books</h3><ul>{''.join(f'<li><a href="books.html#{b["slug"]}"><i>{b["title"]}</i></a></li>' for b in BOOKS)}</ul></div>
+    <div><h3>For hosts</h3><ul><li><a href="visits.html">Author visits</a></li><li><a href="contact.html?topic=signing">Bookstore signings</a></li><li><a href="media.html">Press kit</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div><h3>Publishers</h3><ul><li><a href="https://ambassador-international.com/book-author/michael-lapenna/" target="_blank" rel="noopener">Ambassador International</a></li><li><a href="https://enroutebooksandmedia.com/lauraslocker/" target="_blank" rel="noopener">En Route Books and Media</a></li></ul></div>
   </div>
+  <div class="wrap"><div class="f-base"><span>© 2026 Michael LaPenna</span><button type="button" class="vp-toggle">View desktop version</button><a href="https://lickitysplitweb.com" target="_blank" rel="noopener">Site by Lickity Split Web Design</a></div></div>
 </footer>
 <script src="assets/site.js?v={JSV}"></script>
 </body>
@@ -96,7 +108,7 @@ def page(fname,title,desc,body):
 def cover(b,cls='cv',lazy=True):
     return f'<img class="{cls}" src="assets/{b["cover"]}" width="{b["w"]}" height="{b["h"]}" alt="Cover of {b["title"]}"{" loading=\"lazy\"" if lazy else ""}>'
 def buys(b,cls='sm'): return '<div class="buy">'+''.join(f'<a class="btn {cls}{" ghost" if i else ""}" href="{u}" target="_blank" rel="noopener">{t}</a>' for i,(t,u) in enumerate(b['buy']))+'</div>'
-def visit_cards(): return '<div class="v-grid">'+''.join(f'<article class="v-card"><span class="ic">{ICON[k]}</span><h3>{t}</h3><p>{d}</p></article>' for k,t,d in VISITS)+'</div>'
+def visit_cards(): return '<div class="v-grid">'+''.join(f'<article class="v-card"><span class="ic">{ICON[k]}</span><h3>{t}</h3><p>{d}</p><a class="v-go" href="contact.html?topic={"signing" if k=="store" else "visit"}">{"Ask about a signing" if k=="store" else "Request a visit"}</a></article>' for k,t,d in VISITS)+'</div>'
 
 P={}
 q=L['quote']
@@ -123,15 +135,21 @@ P['index.html']=('Michael LaPenna | Author of the LaRosa Sisters','Michael LaPen
   <a href="{SPREAKER}" target="_blank" rel="noopener"><img src="assets/logos/wcat-radio.png" width="276" height="279" alt="WCAT Radio" class="lg-wcat"></a>
 </div></section>
 
-<section class="band paper"><div class="wrap two why">
+<section class="band router"><div class="wrap">
+  <h2 class="sr-only">Find what you need</h2>
+  <div class="r-grid">
+    <a class="r-card" href="books.html"><span class="r-who">Readers and families</span><b>Meet Catherine and Susanna Mae</b><span class="r-go">Explore the books</span></a>
+    <a class="r-card" href="visits.html"><span class="r-who">Teachers and librarians</span><b>Plan a reading for your students</b><span class="r-go">Arrange an author visit</span></a>
+    <a class="r-card" href="contact.html?topic=signing"><span class="r-who">Booksellers</span><b>Host a signing at your store</b><span class="r-go">Ask about a signing</span></a>
+  </div>
+</div></section>
+
+<section class="band paper"><div class="wrap intro">
+  <div><p class="kicker dark">About the series</p><h2>The stories behind the mysteries</h2></div>
   <div class="prose">
-    <p class="kicker dark">About the series</p>
-    <h2>The stories behind the mysteries</h2>
     <p class="drop">Someone is stealing baby Jesus figures from Nativity scenes in Reedy River. In the mountains, Atticus the border collie chases a bear cub into forbidden woods. Elsewhere, a young woman living alone needs help, and a schoolgirl is accused of cheating. Catherine and Susanna Mae find themselves drawn into each mystery.</p>
     <p>Each adventure asks the sisters to think beyond the clues and consider the people involved. Questions of honesty, loyalty, friendship, and faith become more complicated as Catherine and Susanna Mae grow older.</p>
-    <a class="link" href="books.html">Explore all four stories</a>
   </div>
-  <div class="fan" aria-hidden="true">{''.join(f'<a href="books.html#{b["slug"]}" tabindex="-1" style="--i:{i}">{cover(b)}</a>' for i,b in enumerate(BOOKS))}</div>
 </div></section>
 
 <section class="band quote-band"><div class="wrap">
@@ -140,7 +158,8 @@ P['index.html']=('Michael LaPenna | Author of the LaRosa Sisters','Michael LaPen
 
 <section class="band on-dark"><div class="wrap">
   <div class="sec-h"><p class="kicker">Reading order</p><h2>The series so far</h2></div>
-  <ol class="order">{''.join(f'<li><a href="books.html#{b["slug"]}">{cover(b)}<span class="no">Book {b["n"]} · {b["year"]}</span><b>{b["title"]}</b><span class="sm-t">{b["details"][0]}</span></a></li>' for b in BOOKS)}</ol>
+  <ol class="order">{''.join(f'<li><a href="books.html#{b["slug"]}">{cover(b)}<span class="no">Book {b["n"]} · {b["year"]}</span><b>{b["title"]}</b><span class="sm-t">{b["short"]}</span></a></li>' for b in BOOKS)}</ol>
+  <div class="center"><a class="btn gold" href="books.html">Explore all four stories</a></div>
 </div></section>
 
 <section class="band white"><div class="wrap">
@@ -171,7 +190,7 @@ P['index.html']=('Michael LaPenna | Author of the LaRosa Sisters','Michael LaPen
 def bookrow(b):
     qb=''
     if b.get('quote'):
-        qq=b['quote'];qb=f'<blockquote class="mini-q"><p>“{qq[0]}”</p><cite>{qq[1]}</cite></blockquote>'
+        qq=b['quote'];qb=f'<blockquote class="mini-q"><p>“{qq[0]}”</p><cite>{qq[1]}, {qq[2]}</cite></blockquote>'
     return f'''<article class="book" id="{b["slug"]}"><div class="cv-wrap">{cover(b)}</div><div>
 <span class="no">Book {b["n"]} · {b["year"]}</span><h2>{b["title"]}</h2><p class="meta">{b["pub"]}</p>
 <p>{b["sum"]}</p>{qb}
@@ -179,6 +198,13 @@ def bookrow(b):
 P['books.html']=('Books | Michael LaPenna','All four LaRosa Sisters books by Michael LaPenna in reading order, with links to buy each one.',f'''
 <section class="page-h on-dark"><div class="wrap"><p class="kicker">Books</p><h1>The LaRosa Sisters</h1><p class="lede">From a missing Nativity figure to a difficult choice at school, each LaRosa Sisters book brings Catherine and Susanna Mae a new adventure. Explore the four stories in reading order.</p>
 <ol class="jump">{''.join(f'<li><a href="#{b["slug"]}"><span>{b["n"]}</span>{b["title"]}</a></li>' for b in BOOKS)}</ol></div></section>
+<section class="band white glance-band"><div class="wrap">
+  <h2 class="glance-h">At a glance</h2>
+  <div class="tbl-wrap"><table class="glance"><thead><tr><th>Book</th><th>Published</th><th>Length</th><th>Reading age</th><th>Formats</th></tr></thead><tbody>
+  {''.join(f'<tr><td><a href="#{b["slug"]}"><i>{b["title"]}</i></a><span>Book {b["n"]}</span></td><td>{b["year"]}, {b["pub"]}</td><td>{b["pages"]}</td><td>{b["age"]}</td><td>{b["formats"]}</td></tr>' for b in BOOKS)}
+  </tbody></table></div>
+  <p class="small">Page counts and reading ages are taken from the publishers’ and Amazon’s listings.</p>
+</div></section>
 <section class="wrap books">{''.join(bookrow(b) for b in BOOKS)}</section>
 <section class="band paper"><div class="wrap note-grid">
   <div><h2>For schools and libraries</h2><p>Organizing a reading or school event? Ask about signed copies when planning. For larger orders of <i>Laura’s Locker</i>, En Route Books and Media offers bulk purchasing.</p><a class="link" href="https://enroutebooksandmedia.com/lauraslocker/" target="_blank" rel="noopener">Bulk orders from En Route</a></div>
@@ -200,6 +226,7 @@ P['visits.html']=('School Visits, Readings and Signings | Michael LaPenna','Invi
 </div></section>
 <section class="band white"><div class="wrap">
   <div class="sec-h"><p class="kicker dark">Planning</p><h2>Planning an event</h2></div>
+  <p class="based"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span>Michael lives in upstate South Carolina and spends part of each year in western Maine and southeastern Florida.</span></p>
   <ol class="steps"><li><b>Dates</b><span>Your preferred date or a few possible options.</span></li><li><b>Audience</b><span>Age or grade range and approximate group size.</span></li><li><b>Location</b><span>The name and location of your school, library, or bookstore.</span></li><li><b>Books</b><span>Whether copies will be available for sale or signing.</span></li></ol>
   <div class="center"><a class="btn" href="contact.html?topic=visit">Send a visit request</a></div>
 </div></section>''')
