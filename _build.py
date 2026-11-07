@@ -211,11 +211,6 @@ P['about.html']=('About | Michael LaPenna','About Michael LaPenna, retired high 
     <p>Since retiring, Michael has turned his attention to stories for young readers. His LaRosa Sisters series follows Catherine and Susanna Mae as they solve mysteries and wrestle with questions about honesty, friendship, and faith.</p>
     <p>Michael and his wife, Patti, live in upstate South Carolina and spend part of each year in western Maine and southeastern Florida. Away from his writing desk, he enjoys visiting his three granddaughters, splitting wood, reading, and keeping up with Boston sports.</p>
   </div>
-</div></section>
-<section class="band white"><div class="wrap facts-row">
-  <div><b>34 years</b><span>teaching secondary school English</span></div>
-  <div><b>4 books</b><span>in the LaRosa Sisters series</span></div>
-  <div><b>2 publishers</b><span>Ambassador International and En Route Books and Media</span></div>
 </div></section>''')
 
 P['media.html']=('Media | Michael LaPenna','Interviews with Michael LaPenna and a press kit with cover images, author photo, and short bio.',f'''
