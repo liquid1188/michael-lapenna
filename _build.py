@@ -226,7 +226,6 @@ P['visits.html']=('School Visits, Readings and Signings | Michael LaPenna','Invi
 </div></section>
 <section class="band white"><div class="wrap">
   <div class="sec-h"><p class="kicker dark">Planning</p><h2>Planning an event</h2></div>
-  <p class="based"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span>Michael lives in upstate South Carolina and spends part of each year in western Maine and southeastern Florida.</span></p>
   <ol class="steps"><li><b>Dates</b><span>Your preferred date or a few possible options.</span></li><li><b>Audience</b><span>Age or grade range and approximate group size.</span></li><li><b>Location</b><span>The name and location of your school, library, or bookstore.</span></li><li><b>Books</b><span>Whether copies will be available for sale or signing.</span></li></ol>
   <div class="center"><a class="btn" href="contact.html?topic=visit">Send a visit request</a></div>
 </div></section>''')
