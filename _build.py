@@ -1,6 +1,9 @@
 """Michael LaPenna author site (concept). Run: python3 _build.py"""
 import os
 R=os.path.dirname(os.path.abspath(__file__))
+import hashlib
+CSSV=hashlib.sha1(open(os.path.join(R,'assets/site.css'),'rb').read()).hexdigest()[:8]
+JSV=hashlib.sha1(open(os.path.join(R,'assets/site.js'),'rb').read()).hexdigest()[:8]
 NAV=[('index.html','Home'),('books.html','Books'),('visits.html','Visits'),('about.html','About'),('media.html','Media'),('contact.html','Contact')]
 AMZ='https://www.amazon.com/dp/'
 YT='POn3cG_RTKs'
@@ -63,7 +66,7 @@ def page(fname,title,desc,body):
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/site.css?v={CSSV}">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -85,7 +88,7 @@ def page(fname,title,desc,body):
     <div class="f-base"><span>© 2026 Michael LaPenna</span><button type="button" class="vp-toggle">View desktop version</button><a href="https://lickitysplitweb.com" target="_blank" rel="noopener">Site by Lickity Split Web Design</a></div>
   </div>
 </footer>
-<script src="assets/site.js"></script>
+<script src="assets/site.js?v={JSV}"></script>
 </body>
 </html>
 '''
