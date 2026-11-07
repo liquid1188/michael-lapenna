@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>try{if(localStorage.getItem('ml-desktop')==='1')document.querySelector('meta[name=viewport]').setAttribute('content','width=1200')}catch(e){}</script>
+<title>Contact | Michael LaPenna</title>
+<meta name="description" content="Get in touch with author Michael LaPenna.">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="Contact | Michael LaPenna">
+<meta property="og:description" content="Get in touch with author Michael LaPenna.">
+<meta property="og:image" content="assets/cover-lauras-locker.jpg">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><div class="wrap">
+  <a class="brand" href="index.html"><b>Michael LaPenna</b><span>The LaRosa Sisters</span></a>
+  <button class="menu" aria-expanded="false" aria-controls="nav">Menu</button>
+  <nav id="nav" aria-label="Main"><ul><li><a href="index.html">Home</a></li><li><a href="books.html">Books</a></li><li><a href="about.html">About</a></li><li><a href="media.html">Media</a></li><li><a href="speaking.html">Speaking</a></li><li><a href="contact.html" aria-current="page">Contact</a></li></ul></nav>
+</div></header>
+<main id="main">
+
+<section class="page-h"><div class="wrap"><p class="kicker">Contact</p><h1>Get in touch</h1><p class="lede">Questions about the books, speaking requests, or a note from a reader. Messages come straight to Michael.</p></div></section>
+<section class="wrap contact">
+  <form id="cform" class="form" action="https://api.web3forms.com/submit" method="POST">
+    <input type="hidden" name="access_key" value="MICHAEL_WEB3FORMS_KEY">
+    <input type="hidden" name="subject" value="New message from michaellapenna site">
+    <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off">
+    <label>Name<input name="name" required autocomplete="name"></label>
+    <label>Email<input type="email" name="email" required autocomplete="email"></label>
+    <label>What is this about?<select name="topic" id="topic"><option>A question about the books</option><option value="speaking">A speaking request</option><option>A note from a reader</option><option>Something else</option></select></label>
+    <label>Message<textarea name="message" rows="6" required></textarea></label>
+    <button class="btn" type="submit">Send message</button>
+    <p class="form-msg" id="fmsg" role="status"></p>
+  </form>
+  <span class="ph-note">Concept preview. The form goes live once it is connected to Michael’s own email.</span>
+</section>
+</main>
+<footer><div class="wrap">
+  <div class="f-top">
+    <div><b class="f-name">Michael LaPenna</b><p>Author of the LaRosa Sisters mysteries for young readers.</p></div>
+    <ul><li><a href="index.html">Home</a></li><li><a href="books.html">Books</a></li><li><a href="about.html">About</a></li><li><a href="media.html">Media</a></li><li><a href="speaking.html">Speaking</a></li><li><a href="contact.html">Contact</a></li></ul>
+  </div>
+  <div class="f-base"><span>© 2026 Michael LaPenna</span><button type="button" class="vp-toggle">View desktop version</button><a href="https://lickitysplitweb.com" target="_blank" rel="noopener">Site by Lickity Split Web Design</a></div>
+</div></footer>
+<script src="assets/site.js"></script>
+</body>
+</html>
