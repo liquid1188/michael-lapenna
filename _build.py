@@ -32,7 +32,11 @@ BOOKS=[
   quote=('Michael LaPenna invites young readers into a compelling encounter with conscience, courage, and grace. Laura’s Locker reveals how faith strengthens the heart to confront injustice, embrace truth, and discover the healing power of authentic friendship.','Dr. Sebastian Mahfood, OP','author of <i>The Narrative Spirituality of Dante’s Divine Comedy</i>'),
   buy=[('Paperback',AMZ+'B0HPS6LFQ8'),('Kindle',AMZ+'B0HMDQLXDR'),('Audible','https://www.audible.com/pd/Audiobook/B0HL6SZ6DQ'),('Publisher','https://enroutebooksandmedia.com/lauraslocker/')]),
 ]
-L=BOOKS[3]
+BOOKS[3]['n']=5
+PLACE=dict(n=4,slug='book-4',title='Book 4',short='Details coming soon',pub='',year='',details=['Details coming soon'],cover='cover-book-4.jpg',w=700,h=1050,pages='—',age='—',formats='—',sum='Michael’s fourth LaRosa Sisters book will be added here soon.',buy=[],ph=True)
+PUB=BOOKS[:]
+BOOKS=BOOKS[:3]+[PLACE]+BOOKS[3:]
+L=BOOKS[4]
 PH=lambda t:f'<p class="ph-note">{t}</p>'
 VIDEO=f'<div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/{YT}" title="Michael LaPenna on The Catholic Bookworm" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>'
 
@@ -43,10 +47,10 @@ ICON={
  'store':'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19c4-1 6-6 8-11 1 4 3 8 8 11"/><path d="M14 4l3 3-8 8H6v-3z"/></svg>',
 }
 VISITS=[
- ('school','visit-schools.jpg','A classroom of students raising their hands','Schools','Book readings for students, followed by time for questions and conversation.'),
- ('library','visit-libraries.jpg','Picture books on a library shelf','Libraries','Readings and conversations for children and their families.'),
- ('fair','visit-book-fairs.jpg','A child reading a book','Book fairs','Meet the author, hear a passage from a book, and have a copy signed.'),
- ('store','visit-bookstores.jpg','Shelves of books in a bright store','Bookstores','In-store readings and book signings for local readers.'),
+ ('school','visit-schools.jpg','Children sitting on a classroom rug listening to a read-aloud','Schools','Book readings for students, followed by time for questions and conversation.'),
+ ('library','visit-libraries.jpg','Children gathered on the floor for story time at a library','Libraries','Readings and conversations for children and their families.'),
+ ('fair','visit-book-fairs.jpg','Children crowding in to look at books at a book fair','Book fairs','Meet the author, hear a passage from a book, and have a copy signed.'),
+ ('store','visit-bookstores.jpg','Aisles of shelves in a bookstore','Bookstores','In-store readings and book signings for local readers.'),
 ]
 
 import json as _json
@@ -55,7 +59,7 @@ BASE='https://liquid1188.github.io/michael-lapenna/'
 def ld(fname):
     person={"@type":"Person","@id":BASE+"#michael","name":"Michael LaPenna","jobTitle":"Author","url":BASE,"image":BASE+"assets/michael-lapenna.jpg","alumniOf":[{"@type":"CollegeOrUniversity","name":"Colby College"},{"@type":"CollegeOrUniversity","name":"Salem State University"}]}
     if fname=='books.html':
-        g=[person]+[{"@type":"Book","name":b['title'].replace('’',"'"),"author":{"@id":BASE+"#michael"},"isbn":ISBN[b['slug']],"datePublished":b['year'],"publisher":{"@type":"Organization","name":b['pub']},"image":BASE+"assets/"+b['cover'],"bookFormat":"https://schema.org/Paperback" if 'Hardcover' not in b['details'][0] else "https://schema.org/Hardcover"} for b in BOOKS]
+        g=[person]+[{"@type":"Book","name":b['title'].replace('’',"'"),"author":{"@id":BASE+"#michael"},"isbn":ISBN[b['slug']],"datePublished":b['year'],"publisher":{"@type":"Organization","name":b['pub']},"image":BASE+"assets/"+b['cover'],"bookFormat":"https://schema.org/Paperback" if 'Hardcover' not in b['details'][0] else "https://schema.org/Hardcover"} for b in PUB]
     else: g=[person]
     return '<script type="application/ld+json">'+_json.dumps({"@context":"https://schema.org","@graph":g})+'</script>'
 
@@ -94,11 +98,12 @@ def page(fname,title,desc,body):
 <footer>
   <div class="wrap f-cols">
     <div><h3>Explore</h3><ul>{''.join(f'<li><a href="{h}">{t}</a></li>' for h,t in NAV)}</ul></div>
-    <div><h3>The books</h3><ul>{''.join(f'<li><a href="books.html#{b["slug"]}"><i>{b["title"]}</i></a></li>' for b in BOOKS)}</ul></div>
+    <div><h3>The books</h3><ul>{''.join(f'<li><a href="books.html#{b["slug"]}"><i>{b["title"]}</i></a></li>' for b in PUB)}</ul></div>
     <div><h3>For hosts</h3><ul><li><a href="visits.html">Author visits</a></li><li><a href="contact.html?topic=signing">Bookstore signings</a></li><li><a href="media.html">Press kit</a></li><li><a href="contact.html">Contact</a></li></ul></div>
     <div><h3>Publishers</h3><ul><li><a href="https://ambassador-international.com/book-author/michael-lapenna/" target="_blank" rel="noopener">Ambassador International</a></li><li><a href="https://enroutebooksandmedia.com/lauraslocker/" target="_blank" rel="noopener">En Route Books and Media</a></li></ul></div>
   </div>
-  <div class="wrap"><div class="f-base"><span>© 2026 Michael LaPenna</span><button type="button" class="vp-toggle">View desktop version</button><a href="https://lickitysplitweb.com" target="_blank" rel="noopener">Site by Lickity Split Web Design</a></div></div>
+  <div class="wrap"><p class="f-credits">Photos: Barrett.Discovery, Mosman Library, StephenLukeEdD, ReneS and allenallen1910 on Flickr, CC BY 2.0. Classroom photo, U.S. National Archives, public domain.</p>
+  <div class="f-base"><span>© 2026 Michael LaPenna</span><button type="button" class="vp-toggle">View desktop version</button><a href="https://lickitysplitweb.com" target="_blank" rel="noopener">Site by Lickity Split Web Design</a></div></div>
 </footer>
 <script src="assets/site.js?v={JSV}"></script>
 </body>
@@ -107,7 +112,7 @@ def page(fname,title,desc,body):
 
 def cover(b,cls='cv',lazy=True):
     return f'<img class="{cls}" src="assets/{b["cover"]}" width="{b["w"]}" height="{b["h"]}" alt="Cover of {b["title"]}"{" loading=\"lazy\"" if lazy else ""}>'
-def buys(b,cls='sm'): return '<div class="buy">'+''.join(f'<a class="btn {cls}{" ghost" if i else ""}" href="{u}" target="_blank" rel="noopener">{t}</a>' for i,(t,u) in enumerate(b['buy']))+'</div>'
+def buys(b,cls='sm'): return '' if not b['buy'] else '<div class="buy">'+''.join(f'<a class="btn {cls}{" ghost" if i else ""}" href="{u}" target="_blank" rel="noopener">{t}</a>' for i,(t,u) in enumerate(b['buy']))+'</div>'
 def visit_cards(): return '<div class="v-grid">'+''.join(f'<article class="v-card"><img class="v-ph" src="assets/photos/{ph}" alt="{alt}" loading="lazy" width="1000" height="640"><div class="v-body"><h3>{t}</h3><p>{d}</p><a class="v-go" href="contact.html?topic={"signing" if k=="store" else "visit"}">{"Ask about a signing" if k=="store" else "Request a visit"}</a></div></article>' for k,ph,alt,t,d in VISITS)+'</div>'
 
 P={}
@@ -117,7 +122,7 @@ P['index.html']=('Michael LaPenna | Author of the LaRosa Sisters','Michael LaPen
   <div class="hero-copy">
     <p class="kicker">The LaRosa Sisters · Mysteries and adventures for young readers</p>
     <h1>Two sisters. One mystery after another.</h1>
-    <p class="lede">Meet Catherine and Susanna Mae LaRosa. Between missing Nativity figures, a dog in danger, and a classmate falsely accused, the sisters have plenty of mysteries to untangle. Michael LaPenna’s four-book series brings together adventure, family, and Catholic faith.</p>
+    <p class="lede">Meet Catherine and Susanna Mae LaRosa. Between missing Nativity figures, a dog in danger, and a classmate falsely accused, the sisters have plenty of mysteries to untangle. Michael LaPenna’s five-book series brings together adventure, family, and Catholic faith.</p>
     <div class="ctas"><a class="btn" href="books.html">Explore the books</a><a class="btn ghost-light" href="visits.html">Arrange an author visit</a></div>
   </div>
   <div class="hero-book">
@@ -149,7 +154,7 @@ P['index.html']=('Michael LaPenna | Author of the LaRosa Sisters','Michael LaPen
     <p class="drop">Someone is stealing baby Jesus figures from Nativity scenes in Reedy River. In the mountains, Atticus the border collie chases a bear cub into forbidden woods. Elsewhere, a young woman living alone needs help, and a schoolgirl is accused of cheating. Catherine and Susanna Mae find themselves drawn into each mystery.</p>
     <p>Each adventure asks the sisters to think beyond the clues and consider the people involved. Questions of honesty, loyalty, friendship, and faith become more complicated as Catherine and Susanna Mae grow older.</p>
   </div>
-  <figure class="intro-ph"><img src="assets/photos/kids-reading.jpg" width="960" height="1438" alt="Two children reading a book together outdoors" loading="lazy"></figure>
+  <figure class="intro-ph"><img src="assets/photos/mystery.jpg" width="1024" height="683" alt="A magnifying glass resting on an open book" loading="lazy"></figure>
 </div></section>
 
 <section class="band quote-band"><div class="wrap">
@@ -158,8 +163,8 @@ P['index.html']=('Michael LaPenna | Author of the LaRosa Sisters','Michael LaPen
 
 <section class="band on-dark"><div class="wrap">
   <div class="sec-h"><p class="kicker">Reading order</p><h2>The series so far</h2></div>
-  <ol class="order">{''.join(f'<li><a href="books.html#{b["slug"]}">{cover(b)}<span class="no">Book {b["n"]} · {b["year"]}</span><b>{b["title"]}</b><span class="sm-t">{b["short"]}</span></a></li>' for b in BOOKS)}</ol>
-  <div class="center"><a class="btn gold" href="books.html">Explore all four stories</a></div>
+  <ol class="order">{''.join(f'<li><a href="books.html#{b["slug"]}">{cover(b)}<span class="no">Book {b["n"]}{(" · "+b["year"]) if b["year"] else ""}</span><b>{b["title"] if not b.get("ph") else "Title coming soon"}</b><span class="sm-t">{b["short"]}</span></a></li>' for b in BOOKS)}</ol>
+  <div class="center"><a class="btn gold" href="books.html">Explore the series</a></div>
 </div></section>
 
 <section class="band white"><div class="wrap">
@@ -192,16 +197,16 @@ def bookrow(b):
     if b.get('quote'):
         qq=b['quote'];qb=f'<blockquote class="mini-q"><p>“{qq[0]}”</p><cite>{qq[1]}, {qq[2]}</cite></blockquote>'
     return f'''<article class="book" id="{b["slug"]}"><div class="cv-wrap">{cover(b)}</div><div>
-<span class="no">Book {b["n"]} · {b["year"]}</span><h2>{b["title"]}</h2><p class="meta">{b["pub"]}</p>
+<span class="no">Book {b["n"]}{(" · "+b["year"]) if b["year"] else ""}</span><h2>{b["title"] if not b.get("ph") else "Title coming soon"}</h2><p class="meta">{b["pub"]}</p>
 <p>{b["sum"]}</p>{qb}
 <ul class="facts">{''.join(f'<li>{d}</li>' for d in b["details"])}</ul>{buys(b)}</div></article>'''
-P['books.html']=('Books | Michael LaPenna','All four LaRosa Sisters books by Michael LaPenna in reading order, with links to buy each one.',f'''
-<section class="page-h on-dark"><div class="wrap"><p class="kicker">Books</p><h1>The LaRosa Sisters</h1><p class="lede">From a missing Nativity figure to a difficult choice at school, each LaRosa Sisters book brings Catherine and Susanna Mae a new adventure. Explore the four stories in reading order.</p>
+P['books.html']=('Books | Michael LaPenna','The LaRosa Sisters books by Michael LaPenna in reading order, with links to buy each one.',f'''
+<section class="page-h on-dark"><div class="wrap"><p class="kicker">Books</p><h1>The LaRosa Sisters</h1><p class="lede">From a missing Nativity figure to a difficult choice at school, each LaRosa Sisters book brings Catherine and Susanna Mae a new adventure. Explore the stories in reading order.</p>
 <ol class="jump">{''.join(f'<li><a href="#{b["slug"]}"><span>{b["n"]}</span>{b["title"]}</a></li>' for b in BOOKS)}</ol></div></section>
 <section class="band white glance-band"><div class="wrap">
   <h2 class="glance-h">At a glance</h2>
   <div class="tbl-wrap"><table class="glance"><thead><tr><th>Book</th><th>Published</th><th>Length</th><th>Reading age</th><th>Formats</th></tr></thead><tbody>
-  {''.join(f'<tr><td><a href="#{b["slug"]}"><i>{b["title"]}</i></a><span>Book {b["n"]}</span></td><td>{b["year"]}, {b["pub"]}</td><td>{b["pages"]}</td><td>{b["age"]}</td><td>{b["formats"]}</td></tr>' for b in BOOKS)}
+  {''.join(f'<tr><td><a href="#{b["slug"]}"><i>{b["title"]}</i></a><span>Book {b["n"]}</span></td><td>{(b["year"]+", "+b["pub"]) if b["year"] else "Coming soon"}</td><td>{b["pages"]}</td><td>{b["age"]}</td><td>{b["formats"]}</td></tr>' for b in BOOKS)}
   </tbody></table></div>
   <p class="small">Page counts and reading ages are taken from the publishers’ and Amazon’s listings.</p>
 </div></section>
@@ -258,7 +263,7 @@ P['media.html']=('Media | Michael LaPenna','Interviews with Michael LaPenna and 
   </div>
   <h3 class="kit-h">Book covers</h3>
   <div class="kit-covers">
-    {''.join(f'<a class="kit-img" href="assets/{b["cover"]}" target="_blank" rel="noopener">{cover(b)}<span><i>{b["title"]}</i></span></a>' for b in BOOKS)}
+    {''.join(f'<a class="kit-img" href="assets/{b["cover"]}" target="_blank" rel="noopener">{cover(b)}<span><i>{b["title"]}</i></span></a>' for b in PUB)}
   </div>
 </div></section>''')
 
