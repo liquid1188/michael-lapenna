@@ -47,10 +47,10 @@ ICON={
  'store':'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19c4-1 6-6 8-11 1 4 3 8 8 11"/><path d="M14 4l3 3-8 8H6v-3z"/></svg>',
 }
 VISITS=[
- ('school','visit-schools-2.jpg','Children sitting on a classroom rug listening to a read-aloud','Schools','Book readings for students, followed by time for questions and conversation.'),
- ('library','visit-libraries-2.jpg','Children gathered on the floor for story time at a library','Libraries','Readings and conversations for children and their families.'),
- ('fair','visit-book-fairs-2.jpg','Children crowding in to look at books at a book fair','Book fairs','Meet the author, hear a passage from a book, and have a copy signed.'),
- ('store','visit-bookstores-2.jpg','Aisles of shelves in a bookstore','Bookstores','In-store readings and book signings for local readers.'),
+ ('school','visit-schools-3.jpg','Students sitting in a circle on a classroom rug','Schools','Book readings for students, followed by time for questions and conversation.'),
+ ('library','visit-libraries-3.jpg','A story rug and picture-book shelves in a children’s library','Libraries','Readings and conversations for children and their families.'),
+ ('fair','visit-book-fairs-3.jpg','Children crowding in to look at books at a book fair','Book fairs','Meet the author, hear a passage from a book, and have a copy signed.'),
+ ('store','visit-bookstores-3.jpg','Aisles of shelves in a bookstore','Bookstores','In-store readings and book signings for local readers.'),
 ]
 
 import json as _json
@@ -102,7 +102,7 @@ def page(fname,title,desc,body):
     <div><h3>For hosts</h3><ul><li><a href="visits.html">Author visits</a></li><li><a href="contact.html?topic=signing">Bookstore signings</a></li><li><a href="media.html">Press kit</a></li><li><a href="contact.html">Contact</a></li></ul></div>
     <div><h3>Publishers</h3><ul><li><a href="https://ambassador-international.com/book-author/michael-lapenna/" target="_blank" rel="noopener">Ambassador International</a></li><li><a href="https://enroutebooksandmedia.com/lauraslocker/" target="_blank" rel="noopener">En Route Books and Media</a></li></ul></div>
   </div>
-  <div class="wrap"><p class="f-credits">Photos: Barrett.Discovery, Mosman Library, StephenLukeEdD and ReneS on Flickr, CC BY 2.0. Woods photo by Johannes Plenio, CC0. Classroom photo, U.S. National Archives, public domain.</p>
+  <div class="wrap"><p class="f-credits">Photos: USAG-Humphreys, StephenLukeEdD and ReneS on Flickr, CC BY 2.0; Blue Mountains Library, CC BY-SA 2.0. Woods photo by Johannes Plenio, CC0. Classroom photo, U.S. National Archives, public domain.</p>
   <div class="f-base"><span>© 2026 Michael LaPenna</span><button type="button" class="vp-toggle">View desktop version</button><a href="https://lickitysplitweb.com" target="_blank" rel="noopener">Site by Lickity Split Web Design</a></div></div>
 </footer>
 <script src="assets/site.js?v={JSV}"></script>
