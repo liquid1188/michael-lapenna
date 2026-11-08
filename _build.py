@@ -43,10 +43,10 @@ ICON={
  'store':'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19c4-1 6-6 8-11 1 4 3 8 8 11"/><path d="M14 4l3 3-8 8H6v-3z"/></svg>',
 }
 VISITS=[
- ('school','Schools','Book readings for students, followed by time for questions and conversation.'),
- ('library','Libraries','Readings and conversations for children and their families.'),
- ('fair','Book fairs','Meet the author, hear a passage from a book, and have a copy signed.'),
- ('store','Bookstores','In-store readings and book signings for local readers.'),
+ ('school','visit-schools.jpg','A classroom of students raising their hands','Schools','Book readings for students, followed by time for questions and conversation.'),
+ ('library','visit-libraries.jpg','Picture books on a library shelf','Libraries','Readings and conversations for children and their families.'),
+ ('fair','visit-book-fairs.jpg','A child reading a book','Book fairs','Meet the author, hear a passage from a book, and have a copy signed.'),
+ ('store','visit-bookstores.jpg','Shelves of books in a bright store','Bookstores','In-store readings and book signings for local readers.'),
 ]
 
 import json as _json
@@ -108,7 +108,7 @@ def page(fname,title,desc,body):
 def cover(b,cls='cv',lazy=True):
     return f'<img class="{cls}" src="assets/{b["cover"]}" width="{b["w"]}" height="{b["h"]}" alt="Cover of {b["title"]}"{" loading=\"lazy\"" if lazy else ""}>'
 def buys(b,cls='sm'): return '<div class="buy">'+''.join(f'<a class="btn {cls}{" ghost" if i else ""}" href="{u}" target="_blank" rel="noopener">{t}</a>' for i,(t,u) in enumerate(b['buy']))+'</div>'
-def visit_cards(): return '<div class="v-grid">'+''.join(f'<article class="v-card"><span class="ic">{ICON[k]}</span><h3>{t}</h3><p>{d}</p><a class="v-go" href="contact.html?topic={"signing" if k=="store" else "visit"}">{"Ask about a signing" if k=="store" else "Request a visit"}</a></article>' for k,t,d in VISITS)+'</div>'
+def visit_cards(): return '<div class="v-grid">'+''.join(f'<article class="v-card"><img class="v-ph" src="assets/photos/{ph}" alt="{alt}" loading="lazy" width="1000" height="640"><div class="v-body"><h3>{t}</h3><p>{d}</p><a class="v-go" href="contact.html?topic={"signing" if k=="store" else "visit"}">{"Ask about a signing" if k=="store" else "Request a visit"}</a></div></article>' for k,ph,alt,t,d in VISITS)+'</div>'
 
 P={}
 q=L['quote']
@@ -145,11 +145,11 @@ P['index.html']=('Michael LaPenna | Author of the LaRosa Sisters','Michael LaPen
 </div></section>
 
 <section class="band paper"><div class="wrap intro">
-  <div><p class="kicker dark">About the series</p><h2>The stories behind the mysteries</h2></div>
-  <div class="prose">
+  <div class="prose"><p class="kicker dark">About the series</p><h2>The stories behind the mysteries</h2>
     <p class="drop">Someone is stealing baby Jesus figures from Nativity scenes in Reedy River. In the mountains, Atticus the border collie chases a bear cub into forbidden woods. Elsewhere, a young woman living alone needs help, and a schoolgirl is accused of cheating. Catherine and Susanna Mae find themselves drawn into each mystery.</p>
     <p>Each adventure asks the sisters to think beyond the clues and consider the people involved. Questions of honesty, loyalty, friendship, and faith become more complicated as Catherine and Susanna Mae grow older.</p>
   </div>
+  <figure class="intro-ph"><img src="assets/photos/kids-reading.jpg" width="960" height="1438" alt="Two children reading a book together outdoors" loading="lazy"></figure>
 </div></section>
 
 <section class="band quote-band"><div class="wrap">
@@ -183,8 +183,8 @@ P['index.html']=('Michael LaPenna | Author of the LaRosa Sisters','Michael LaPen
 </div></section>
 
 <section class="band on-dark cta-band"><div class="wrap cta-in">
-  <div><h2>Interested in hosting a reading or signing?</h2><p>Share a little about your venue, your readers, and the dates you have in mind.</p></div>
-  <a class="btn" href="contact.html?topic=visit">Invite Michael</a>
+  <img class="cta-ph" src="assets/photos/classroom-hands.jpg" width="996" height="668" alt="Students raising their hands in a classroom" loading="lazy">
+  <div class="cta-txt"><h2>Interested in hosting a reading or signing?</h2><p>Share a little about your venue, your readers, and the dates you have in mind.</p><a class="btn" href="contact.html?topic=visit">Invite Michael</a></div>
 </div></section>''')
 
 def bookrow(b):
