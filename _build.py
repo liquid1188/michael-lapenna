@@ -47,10 +47,10 @@ ICON={
  'store':'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19c4-1 6-6 8-11 1 4 3 8 8 11"/><path d="M14 4l3 3-8 8H6v-3z"/></svg>',
 }
 VISITS=[
- ('school','visit-schools.jpg','Children sitting on a classroom rug listening to a read-aloud','Schools','Book readings for students, followed by time for questions and conversation.'),
- ('library','visit-libraries.jpg','Children gathered on the floor for story time at a library','Libraries','Readings and conversations for children and their families.'),
- ('fair','visit-book-fairs.jpg','Children crowding in to look at books at a book fair','Book fairs','Meet the author, hear a passage from a book, and have a copy signed.'),
- ('store','visit-bookstores.jpg','Aisles of shelves in a bookstore','Bookstores','In-store readings and book signings for local readers.'),
+ ('school','visit-schools-2.jpg','Children sitting on a classroom rug listening to a read-aloud','Schools','Book readings for students, followed by time for questions and conversation.'),
+ ('library','visit-libraries-2.jpg','Children gathered on the floor for story time at a library','Libraries','Readings and conversations for children and their families.'),
+ ('fair','visit-book-fairs-2.jpg','Children crowding in to look at books at a book fair','Book fairs','Meet the author, hear a passage from a book, and have a copy signed.'),
+ ('store','visit-bookstores-2.jpg','Aisles of shelves in a bookstore','Bookstores','In-store readings and book signings for local readers.'),
 ]
 
 import json as _json
@@ -102,7 +102,7 @@ def page(fname,title,desc,body):
     <div><h3>For hosts</h3><ul><li><a href="visits.html">Author visits</a></li><li><a href="contact.html?topic=signing">Bookstore signings</a></li><li><a href="media.html">Press kit</a></li><li><a href="contact.html">Contact</a></li></ul></div>
     <div><h3>Publishers</h3><ul><li><a href="https://ambassador-international.com/book-author/michael-lapenna/" target="_blank" rel="noopener">Ambassador International</a></li><li><a href="https://enroutebooksandmedia.com/lauraslocker/" target="_blank" rel="noopener">En Route Books and Media</a></li></ul></div>
   </div>
-  <div class="wrap"><p class="f-credits">Photos: Barrett.Discovery, Mosman Library, StephenLukeEdD, ReneS and allenallen1910 on Flickr, CC BY 2.0. Classroom photo, U.S. National Archives, public domain.</p>
+  <div class="wrap"><p class="f-credits">Photos: Barrett.Discovery, Mosman Library, StephenLukeEdD and ReneS on Flickr, CC BY 2.0. Woods photo by Johannes Plenio, CC0. Classroom photo, U.S. National Archives, public domain.</p>
   <div class="f-base"><span>© 2026 Michael LaPenna</span><button type="button" class="vp-toggle">View desktop version</button><a href="https://lickitysplitweb.com" target="_blank" rel="noopener">Site by Lickity Split Web Design</a></div></div>
 </footer>
 <script src="assets/site.js?v={JSV}"></script>
@@ -154,7 +154,7 @@ P['index.html']=('Michael LaPenna | Author of the LaRosa Sisters','Michael LaPen
     <p class="drop">Someone is stealing baby Jesus figures from Nativity scenes in Reedy River. In the mountains, Atticus the border collie chases a bear cub into forbidden woods. Elsewhere, a young woman living alone needs help, and a schoolgirl is accused of cheating. Catherine and Susanna Mae find themselves drawn into each mystery.</p>
     <p>Each adventure asks the sisters to think beyond the clues and consider the people involved. Questions of honesty, loyalty, friendship, and faith become more complicated as Catherine and Susanna Mae grow older.</p>
   </div>
-  <figure class="intro-ph"><img src="assets/photos/mystery.jpg" width="1024" height="683" alt="A magnifying glass resting on an open book" loading="lazy"></figure>
+  <figure class="intro-ph"><img src="assets/photos/woods-path.jpg" width="960" height="640" alt="A misty path leading into the woods" loading="lazy"></figure>
 </div></section>
 
 <section class="band quote-band"><div class="wrap">
