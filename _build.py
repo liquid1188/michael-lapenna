@@ -33,9 +33,13 @@ BOOKS=[
   buy=[('Paperback',AMZ+'B0HPS6LFQ8'),('Kindle',AMZ+'B0HMDQLXDR'),('Audible','https://www.audible.com/pd/Audiobook/B0HL6SZ6DQ'),('Publisher','https://enroutebooksandmedia.com/lauraslocker/')]),
 ]
 BOOKS[3]['n']=5
-PLACE=dict(n=4,slug='book-4',title='Book 4',short='Details coming soon',pub='',year='',details=['Details coming soon'],cover='cover-book-4.jpg',w=700,h=1050,pages='—',age='—',formats='—',sum='Michael’s fourth LaRosa Sisters book will be added here soon.',buy=[],ph=True)
-PUB=BOOKS[:]
+PLACE=dict(n=4,slug='haddies-locket',pages='75 pages',age='8 to 14',formats='Paperback',title='Haddie’s Locket',short='A story about a family keepsake',pub='Independently published',year='2026',
+  details=['Paperback, 75 pages','Reading age 8 to 14'],
+  cover='cover-haddies-locket.jpg',w=700,h=1119,
+  sum='When the girls’ great-grandmother Haddie comes to visit, Catherine borrows her locket while Haddie is away on a short trip, and the locket goes missing. It is the last keepsake Haddie has of her late husband. Catherine dreads telling her, until an old map leads to an adventure and a possible way to make things right.',
+  buy=[('Amazon',AMZ+'B0GCJK65KQ')])
 BOOKS=BOOKS[:3]+[PLACE]+BOOKS[3:]
+PUB=BOOKS[:]
 L=BOOKS[4]
 PH=lambda t:f'<p class="ph-note">{t}</p>'
 VIDEO=f'<div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/{YT}" title="Michael LaPenna on The Catholic Bookworm" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>'
@@ -54,7 +58,7 @@ VISITS=[
 ]
 
 import json as _json
-ISBN={'baby-jesus-is-missing':'9781620209332','the-offering':'9781649603128','angelina-grace':'9781649606136','lauras-locker':'9798888706558'}
+ISBN={'baby-jesus-is-missing':'9781620209332','the-offering':'9781649603128','angelina-grace':'9781649606136','lauras-locker':'9798888706558','haddies-locket':'9798279096312'}
 BASE='https://liquid1188.github.io/michael-lapenna/'
 def ld(fname):
     person={"@type":"Person","@id":BASE+"#michael","name":"Michael LaPenna","jobTitle":"Author","url":BASE,"image":BASE+"assets/michael-lapenna.jpg","alumniOf":[{"@type":"CollegeOrUniversity","name":"Colby College"},{"@type":"CollegeOrUniversity","name":"Salem State University"}]}
