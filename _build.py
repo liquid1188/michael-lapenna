@@ -212,7 +212,6 @@ P['books.html']=('Books | Michael LaPenna','The LaRosa Sisters books by Michael 
   <div class="tbl-wrap"><table class="glance"><thead><tr><th>Book</th><th>Published</th><th>Length</th><th>Reading age</th><th>Formats</th></tr></thead><tbody>
   {''.join(f'<tr><td><a href="#{b["slug"]}"><i>{b["title"]}</i></a><span>Book {b["n"]}</span></td><td>{(b["year"]+", "+b["pub"]) if b["year"] else "Coming soon"}</td><td>{b["pages"]}</td><td>{b["age"]}</td><td>{b["formats"]}</td></tr>' for b in BOOKS)}
   </tbody></table></div>
-  <p class="small">Page counts and reading ages are taken from the publishers’ and Amazon’s listings.</p>
 </div></section>
 <section class="wrap books">{''.join(bookrow(b) for b in BOOKS)}</section>
 <section class="band paper"><div class="wrap note-grid">
