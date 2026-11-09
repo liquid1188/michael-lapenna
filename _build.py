@@ -10,13 +10,13 @@ YT='POn3cG_RTKs'
 SPREAKER='https://www.spreaker.com/episode/episode-330-michael-lapenna-on-his-book-baby-jesus-is-missing-october-13-2026--75766588'
 
 BOOKS=[
- dict(n=1,slug='baby-jesus-is-missing',pages='44 pages',age='5 to 12',formats='Hardcover, Kindle',title='Baby Jesus Is Missing',short='A Christmas mystery',pub='Ambassador International',year='2020',
-  details=['Hardcover, 44 pages','Illustrated by Chris Jackson','Reading age 5 to 12'],
+ dict(n=1,slug='baby-jesus-is-missing',pages='44 pages',age='7 to 12',formats='Hardcover, Kindle',title='Baby Jesus Is Missing',short='A Christmas mystery',pub='Ambassador International',year='2020',
+  details=['Hardcover, 44 pages','Illustrated by Chris Jackson','Reading age 7 to 12'],
   cover='cover-baby-jesus-is-missing.jpg',w=700,h=1144,
   sum='Early in December, Nativity figures begin disappearing across Reedy River. When a $500 reward is offered for catching the thief, Catherine and Susanna Mae decide to investigate. What begins as a Christmas mystery soon becomes a test of their judgment.',
   buy=[('Amazon',AMZ+'1620209330'),('Barnes &amp; Noble','https://www.barnesandnoble.com/w/baby-jesus-is-missing-michael-lapenna/1138393399?ean=9781620209332'),('Publisher','https://ambassador-international.com/books/baby-jesus-is-missing/')]),
- dict(n=2,slug='the-offering',pages='62 pages',age='4 to 8',formats='Paperback',title='The Offering',short='A mountain adventure',pub='Ambassador International',year='2023',
-  details=['Paperback, 62 pages','Reading age 4 to 8'],
+ dict(n=2,slug='the-offering',pages='62 pages',age='7 to 12',formats='Paperback',title='The Offering',short='A mountain adventure',pub='Ambassador International',year='2023',
+  details=['Paperback, 62 pages','Reading age 7 to 12'],
   cover='cover-the-offering.jpg',w=700,h=1000,
   sum='While visiting their grandparents in the mountains, Catherine and Susanna Mae discover a rusted tin full of money. Then their border collie, Atticus, chases a bear cub into woods their grandfather has warned them to avoid. Should they obey his warning or go after their dog?',
   buy=[('Amazon',AMZ+'1649603126'),('Barnes &amp; Noble','https://www.barnesandnoble.com/w/the-offering-michael-lapenna/1143777727?ean=9781649605870'),('Publisher','https://ambassador-international.com/books/the-offering/')]),
@@ -25,8 +25,8 @@ BOOKS=[
   cover='cover-angelina-grace.jpg',w=700,h=1130,
   sum='One autumn afternoon, Catherine meets Ulga, a young woman living alone in a secluded hollow outside town. As the sisters get to know her, they begin to wonder about her circumstances and what they can do to help her stay safe.',
   buy=[('Amazon',AMZ+'1649606133'),('Publisher','https://ambassador-international.com/books/angelina-grace/')]),
- dict(n=4,slug='lauras-locker',pages='191 pages',age='Not listed',formats='Paperback, Kindle, Audible',title='Laura’s Locker',short='A story about telling the truth',pub='En Route Books and Media',year='2026',
-  details=['Paperback, 191 pages','Kindle and Audible'],
+ dict(n=4,slug='lauras-locker',pages='191 pages',age='7 to 12',formats='Paperback, Kindle, Audible',title='Laura’s Locker',short='A story about telling the truth',pub='En Route Books and Media',year='2026',
+  details=['Paperback, 191 pages','Kindle and Audible','Reading age 7 to 12'],
   cover='cover-lauras-locker.jpg',w=666,h=1000,
   sum='Susanna Mae sees a classmate framed for cheating. She knows what happened, but speaking up could cost her a friendship. During a visit to her grandparents in Gloucester, Massachusetts, she encounters mysterious woods and old legends. Back at school, the harder challenge remains.',
   quote=('Michael LaPenna invites young readers into a compelling encounter with conscience, courage, and grace. Laura’s Locker reveals how faith strengthens the heart to confront injustice, embrace truth, and discover the healing power of authentic friendship.','Dr. Sebastian Mahfood, OP','author of <i>The Narrative Spirituality of Dante’s Divine Comedy</i>'),
