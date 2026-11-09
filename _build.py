@@ -33,8 +33,8 @@ BOOKS=[
   buy=[('Paperback',AMZ+'B0HPS6LFQ8'),('Kindle',AMZ+'B0HMDQLXDR'),('Audible','https://www.audible.com/pd/Audiobook/B0HL6SZ6DQ'),('Publisher','https://enroutebooksandmedia.com/lauraslocker/')]),
 ]
 BOOKS[3]['n']=5
-PLACE=dict(n=4,slug='haddies-locket',pages='75 pages',age='8 to 14',formats='Paperback',title='Haddie’s Locket',short='A story about a family keepsake',pub='Independently published',year='2026',
-  details=['Paperback, 75 pages','Reading age 8 to 14'],
+PLACE=dict(n=4,slug='haddies-locket',pages='75 pages',age='7 to 12',formats='Paperback',title='Haddie’s Locket',short='A story about a family keepsake',pub='Independently published',year='2026',
+  details=['Paperback, 75 pages','Reading age 7 to 12'],
   cover='cover-haddies-locket.jpg',w=700,h=1119,
   sum='When the girls’ great-grandmother Haddie comes to visit, Catherine borrows her locket while Haddie is away on a short trip, and the locket goes missing. It is the last keepsake Haddie has of her late husband. Catherine dreads telling her, until an old map leads to an adventure and a possible way to make things right.',
   buy=[('Amazon',AMZ+'B0GCJK65KQ')])
