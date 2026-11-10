@@ -267,6 +267,12 @@ P['media.html']=('Media | Michael LaPenna','Interviews with Michael LaPenna and 
     <a class="kit-photo" href="assets/michael-lapenna.jpg" target="_blank" rel="noopener"><img src="assets/michael-lapenna.jpg" width="573" height="720" alt="Author photo of Michael LaPenna" loading="lazy"><span>Author photo</span></a>
     <div class="kit-bio"><h3>Short bio</h3><p>Michael LaPenna is the author of the LaRosa Sisters mystery series for young readers. He graduated from Colby College and earned a master’s degree in American literature from Salem State University. After 34 years teaching secondary school English and coaching basketball and baseball north of Boston, he now lives in upstate South Carolina.</p></div>
   </div>
+  <h3 class="kit-h">Endorsements</h3>
+  <div class="kit-quotes">
+    <blockquote><p>“One mark of a good children’s book is that it delights adults as well. I found <i>Baby Jesus Is Missing</i> to be such a book.”</p><cite><b>Kiki Latimer</b>, on <i>Baby Jesus Is Missing</i></cite></blockquote>
+    <blockquote><p>“Michael LaPenna has given us a charming mystery story that unfolds the deeper mysteries about growing up, caring for others and learning to forgive and be reconciled.”</p><cite><b>Fr. Dwight Longenecker</b>, on <i>Angelina Grace</i></cite></blockquote>
+    <blockquote><p>“Michael LaPenna invites young readers into a compelling encounter with conscience, courage, and grace.”</p><cite><b>Dr. Sebastian Mahfood, OP</b>, on <i>Laura’s Locker</i></cite></blockquote>
+  </div>
   <h3 class="kit-h">Book covers</h3>
   <div class="kit-covers">
     {''.join(f'<a class="kit-img" href="assets/{b["cover"]}" target="_blank" rel="noopener">{cover(b)}<span><i>{b["title"]}</i></span></a>' for b in PUB)}

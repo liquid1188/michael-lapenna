@@ -387,3 +387,9 @@ footer{border-top:3px solid var(--gold)}
 .age li a:hover b{color:var(--brick)}
 .age li a:after{content:"→";margin-left:auto;color:var(--brick);opacity:.55;transition:opacity .2s,transform .2s}
 .age li a:hover:after{opacity:1;transform:translateX(3px)}
+.kit-quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.kit-quotes blockquote{background:var(--white);border:1px solid var(--rule);border-top:3px solid var(--gold);padding:20px 22px;margin:0}
+.kit-quotes p{font-family:var(--serif);font-size:17.5px;line-height:1.5;color:var(--ink)}
+.kit-quotes cite{display:block;margin-top:12px;font-style:normal;font-size:13.5px;color:var(--ink-3)}
+.kit-quotes cite b{color:var(--ink)}
+@media (max-width:800px){.kit-quotes{grid-template-columns:1fr}}
