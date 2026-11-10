@@ -231,6 +231,9 @@ P['visits.html']=('School Visits, Readings and Signings | Michael LaPenna','Invi
 <section class="band paper"><div class="wrap two visit-detail">
   <div class="prose"><h2>What to expect</h2>
     <ul class="ticks"><li>A reading from a LaRosa Sisters book suited to the audience</li><li>Time for readers to ask about the stories and characters</li><li>Book signing when copies are available</li></ul>
+    <h2 class="sub-h">Fees and books</h2>
+    <p>Michael does not charge a speaking fee. For events outside South Carolina, he asks only that his travel and lodging be covered.</p>
+    <p>He can bring copies of the books to sell and sign at your event. If you would like him to bring books, please give him a few weeks’ notice. Readers can also order copies online ahead of time and bring them to be signed.</p>
   </div>
   <div class="prose"><h2>Explore the books</h2>
     <ul class="age">{''.join(f'<li><a href="books.html#{b["slug"]}">{cover(b,"cv xs")}<div><b><i>{b["title"]}</i></b><span>{b["short"]}</span></div></a></li>' for b in BOOKS)}</ul>

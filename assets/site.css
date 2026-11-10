@@ -396,3 +396,4 @@ footer{border-top:3px solid var(--gold)}
 .form-msg{margin-top:12px;font-size:16px}
 .form-msg.ok{color:#2f6b3a;font-weight:600}
 .form-msg.err{color:var(--brick);font-weight:600}
+.prose h2.sub-h{margin-top:36px}
