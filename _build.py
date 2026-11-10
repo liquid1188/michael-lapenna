@@ -6,6 +6,7 @@ CSSV=hashlib.sha1(open(os.path.join(R,'assets/site.css'),'rb').read()).hexdigest
 JSV=hashlib.sha1(open(os.path.join(R,'assets/site.js'),'rb').read()).hexdigest()[:8]
 NAV=[('index.html','Home'),('books.html','Books'),('visits.html','Visits'),('about.html','About'),('media.html','Media'),('contact.html','Contact')]
 AMZ='https://www.amazon.com/dp/'
+W3F_KEY='MICHAEL_WEB3FORMS_KEY'  # paste the Web3Forms access key here
 YT='POn3cG_RTKs'
 SPREAKER='https://www.spreaker.com/episode/episode-330-michael-lapenna-on-his-book-baby-jesus-is-missing-october-13-2026--75766588'
 
@@ -284,8 +285,9 @@ P['contact.html']=('Contact | Michael LaPenna','Invite Michael LaPenna to your s
 <section class="page-h on-dark"><div class="wrap"><p class="kicker">Contact</p><h1>Get in touch</h1><p class="lede">Have a question about the books or an idea for a reading, signing, or interview? This page is for inquiries about Michael and the LaRosa Sisters series.</p></div></section>
 <section class="band paper"><div class="wrap contact">
   <form id="cform" class="form" action="https://api.web3forms.com/submit" method="POST">
-    <p class="form-off" role="note">The contact form is not active yet, so messages cannot currently be submitted.</p>
-    <input type="hidden" name="access_key" value="MICHAEL_WEB3FORMS_KEY">
+    {'<p class="form-off" role="note">The contact form is not active yet, so messages cannot currently be submitted.</p>' if W3F_KEY.endswith('_KEY') else ''}
+    <input type="hidden" name="access_key" value="{W3F_KEY}">
+    <input type="hidden" name="from_name" value="Michael LaPenna website">
     <input type="hidden" name="subject" value="New message from the Michael LaPenna site">
     <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off">
     <div class="f2"><label>Name<input name="name" required autocomplete="name"></label>

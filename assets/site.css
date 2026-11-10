@@ -393,3 +393,6 @@ footer{border-top:3px solid var(--gold)}
 .kit-quotes cite{display:block;margin-top:12px;font-style:normal;font-size:13.5px;color:var(--ink-3)}
 .kit-quotes cite b{color:var(--ink)}
 @media (max-width:800px){.kit-quotes{grid-template-columns:1fr}}
+.form-msg{margin-top:12px;font-size:16px}
+.form-msg.ok{color:#2f6b3a;font-weight:600}
+.form-msg.err{color:var(--brick);font-weight:600}
