@@ -1,53 +1,49 @@
 """Michael LaPenna author site (concept). Run: python3 _build.py"""
-import os
+import os, re
 R=os.path.dirname(os.path.abspath(__file__))
 import hashlib
 CSSV=hashlib.sha1(open(os.path.join(R,'assets/site.css'),'rb').read()).hexdigest()[:8]
 JSV=hashlib.sha1(open(os.path.join(R,'assets/site.js'),'rb').read()).hexdigest()[:8]
 NAV=[('index.html','Home'),('books.html','Books'),('visits.html','Visits'),('about.html','About'),('media.html','Media'),('contact.html','Contact')]
 AMZ='https://www.amazon.com/dp/'
-W3F_KEY='cb64777c-8b27-489a-93d0-ac578fdd586d'  # Web3Forms access key
-W3F_LIVE=True  # set True once michael.lapenna@yahoo.com is verified and set as the recipient
-YT='POn3cG_RTKs'
-SPREAKER='https://www.spreaker.com/episode/episode-330-michael-lapenna-on-his-book-baby-jesus-is-missing-october-13-2026--75766588'
-
-BOOKS=[
- dict(n=1,slug='baby-jesus-is-missing',pages='44 pages',age='7 to 12',formats='Hardcover, Paperback, Kindle',title='Baby Jesus Is Missing',short='A Christmas mystery',pub='Ambassador International',year='2020',
-  details=['Hardcover, 44 pages','Paperback and Kindle','Illustrated by Chris Jackson','Reading age 7 to 12'],
-  cover='cover-baby-jesus-is-missing.jpg',w=700,h=1144,
-  sum='Early in December, Nativity figures begin disappearing across Reedy River. When a $500 reward is offered for catching the thief, Catherine and Susanna Mae decide to investigate. What begins as a Christmas mystery soon becomes a test of their judgment.',
-  quote=('One mark of a good children’s book is that it delights adults as well. I found <i>Baby Jesus Is Missing</i> to be such a book. Author Michael LaPenna introduces us to sisters Catherine and Susanna Mae as they solve the local town crime of the stolen baby Jesus figurines while also introducing us to the slang of the criminal and detective world in hilarious jaunts of language. The girls soon discover that one’s vocation, even crime solving, requires faith, virtue, and sacrifice. This is a fun faith-filled teaching story, full of surprises, and part of a book series that helps us all find the Baby Jesus and keep him in our lives.','Kiki Latimer','Catholic author and host of <i>The Catholic Bookworm</i>'),
-  buy=[('Hardcover',AMZ+'1620209330'),('Paperback',AMZ+'1649601468'),('Kindle',AMZ+'B08PBYHGYH'),('Barnes &amp; Noble','https://www.barnesandnoble.com/w/baby-jesus-is-missing-michael-lapenna/1138393399?ean=9781620209332'),('Publisher','https://ambassador-international.com/books/baby-jesus-is-missing/')]),
- dict(n=2,slug='the-offering',pages='61 pages',age='7 to 12',formats='Paperback, Hardcover, Kindle',title='The Offering',short='A mountain adventure',pub='Ambassador International',year='2023',
-  details=['Paperback, 61 pages','Hardcover and Kindle','Reading age 7 to 12'],
-  cover='cover-the-offering.jpg',w=700,h=1000,
-  sum='While visiting their grandparents in the mountains, Catherine and Susanna Mae discover a rusted tin full of money. Then their border collie, Atticus, chases a bear cub into woods their grandfather has warned them to avoid. Should they obey his warning or go after their dog?',
-  buy=[('Paperback',AMZ+'1649603126'),('Hardcover',AMZ+'1649605870'),('Kindle',AMZ+'B0C9KLXPFF'),('Barnes &amp; Noble','https://www.barnesandnoble.com/w/the-offering-michael-lapenna/1143777727?ean=9781649605870'),('Publisher','https://ambassador-international.com/books/the-offering/')]),
- dict(n=3,slug='angelina-grace',pages='161 pages',age='8 to 14',formats='Paperback, Kindle',title='Angelina Grace',short='An autumn mystery',pub='Ambassador International',year='2025',
-  details=['Paperback, 161 pages','Kindle','Reading age 8 to 14'],
-  cover='cover-angelina-grace.jpg',w=700,h=1130,
-  sum='One autumn afternoon, Catherine meets Ulga, a young woman living alone in a secluded hollow outside town. As the sisters get to know her, they begin to wonder about her circumstances and what they can do to help her stay safe.',
-  quote=('Michael LaPenna has given us a charming mystery story that unfolds the deeper mysteries about growing up, caring for others and learning to forgive and be reconciled. Join Susanna Mae and her sister Catherine as they solve the mystery of the strange girl in the woods and the stranger men who are searching for her. Written with clear simplicity, LaPenna has a gift for story telling that will attract and absorb the attention of young readers.','Fr. Dwight Longenecker','author of <i>Immortal Combat</i> and <i>Beheading Hydra</i> and the blog <i>Standing on My Head</i>'),
-  buy=[('Paperback',AMZ+'1649606133'),('Kindle',AMZ+'B0G4DMMJ9V'),('Publisher','https://ambassador-international.com/books/angelina-grace/')]),
- dict(n=4,slug='lauras-locker',pages='191 pages',age='7 to 12',formats='Paperback, Kindle, Audible',title='Laura’s Locker',short='A story about telling the truth',pub='En Route Books and Media',year='2026',
-  details=['Paperback, 191 pages','Kindle and Audible','Reading age 7 to 12'],
-  cover='cover-lauras-locker.jpg',w=666,h=1000,
-  sum='Susanna Mae sees a classmate framed for cheating. She knows what happened, but speaking up could cost her a friendship. During a visit to her grandparents in Gloucester, Massachusetts, she encounters mysterious woods and old legends. Back at school, the harder challenge remains.',
-  quote=('Michael LaPenna invites young readers into a compelling encounter with conscience, courage, and grace. <i>Laura’s Locker</i> reveals how faith strengthens the heart to confront injustice, embrace truth, and discover the healing power of authentic friendship.','Dr. Sebastian Mahfood, OP','author of <i>The Narrative Spirituality of Dante’s Divine Comedy</i>'),
-  buy=[('Paperback',AMZ+'B0HPS6LFQ8'),('Kindle',AMZ+'B0HMDQLXDR'),('Audible','https://www.audible.com/pd/Audiobook/B0HL6SZ6DQ'),('Publisher','https://enroutebooksandmedia.com/lauraslocker/')]),
-]
-BOOKS[3]['n']=5
-PLACE=dict(n=4,slug='haddies-locket',pages='75 pages',age='7 to 12',formats='Paperback',title='Haddie’s Locket',short='A story about a family keepsake',pub='Independently published',year='2026',
-  details=['Paperback, 75 pages','Reading age 7 to 12'],
-  cover='cover-haddies-locket.jpg',w=700,h=1119,
-  sum='When the girls’ great-grandmother Haddie comes to visit, Catherine borrows her locket while Haddie is away on a short trip, and the locket goes missing. It is the last keepsake Haddie has of her late husband. Catherine dreads telling her, until an old map leads to an adventure and a possible way to make things right.',
-  buy=[('Paperback',AMZ+'B0GCJK65KQ')])
-BOOKS=BOOKS[:3]+[PLACE]+BOOKS[3:]
-PUB=BOOKS[:]
-BOOKS.append(dict(n=6,slug='a-frowning-providence',pages='—',age='—',formats='—',title='A Frowning Providence',short='The next LaRosa Sisters book',pub='Forthcoming',year='',details=['Publication date to be announced'],cover='cover-a-frowning-providence.jpg',w=700,h=1120,sum='The sixth LaRosa Sisters book is in the works. Details and a cover will be added here when it is published.',buy=[],soon=True))
-L=BOOKS[4]
+import json as _json, html as _html
+C=_json.load(open(os.path.join(R,'content/books.json'),encoding='utf-8'))
+S=_json.load(open(os.path.join(R,'content/site.json'),encoding='utf-8'))
+def md(t):
+    """Editor text to HTML: escape, then *italic* to <i>."""
+    t=_html.escape(t or '',quote=False)
+    return re.sub(r'\*([^*]+)\*',r'<i>\1</i>',t)
+def strip(t): return re.sub(r'\*','',t or '')
+def dims(path):
+    try:
+        from PIL import Image
+        with Image.open(os.path.join(R,path)) as im: return im.size
+    except Exception: return (700,1050)
+BOOKS=[]
+for i,x in enumerate(C.get('books',[])):
+    w,h=dims(x.get('cover',''))
+    soon=x.get('status')!='Published'
+    q=x.get('endorsement') or {}
+    BOOKS.append(dict(n=i+1,slug=x['slug'],title=strip(x['title']),pages=x.get('pages') or '—',age=x.get('reading_age') or '—',formats=x.get('formats') or '—',
+      short=md(x.get('tagline','')),pub=md(x.get('publisher') or ('Forthcoming' if soon else '')),year=x.get('year','') if not soon else '',
+      exp=x.get('expected',''),details=[md(d) for d in x.get('details') or []],src=x.get('cover',''),w=w,h=h,sum=md(x.get('summary','')),
+      quote=(md(q['quote']),md(q.get('name','')),md(q.get('credit',''))) if q.get('quote') else None,
+      buy=[(md(y['label']),y['url']) for y in x.get('buy') or [] if y.get('url')],soon=soon,isbn=x.get('isbn',''),featured=x.get('featured'),badge=x.get('badge','')))
+PUB=[b for b in BOOKS if not b['soon']]
+L=next((b for b in BOOKS if b['featured']),PUB[-1])
+W3F_KEY=S['contact'].get('web3forms_key') or 'MICHAEL_WEB3FORMS_KEY'
+W3F_LIVE=bool(S['contact'].get('form_on'))
+IV=S.get('interviews',[])
+FI=next((v for v in IV if v.get('featured') and v.get('youtube_id')),None)
+def video(v): return f'<div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/{v["youtube_id"]}" title="Michael LaPenna on {_html.escape(v["show"])}" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>'
+def ivbtns(v,ghost='ghost'):
+    o=''
+    if v.get('youtube_id'): o+=f'<a class="btn sm" href="https://www.youtube.com/watch?v={v["youtube_id"]}" target="_blank" rel="noopener">Watch on YouTube</a>'
+    if v.get('listen_url'): o+=f'<a class="btn sm {ghost if o else ""}" href="{v["listen_url"]}" target="_blank" rel="noopener">Listen to the episode</a>'
+    return f'<div class="buy">{o}</div>' if o else ''
+SPREAKER=(FI or {}).get('listen_url') or 'https://www.spreaker.com/'
+def label(b): return f'Book {b["n"]}'+((" · "+b["year"]) if b["year"] else ((" · "+b["exp"]) if b["exp"] else ""))
 PH=lambda t:f'<p class="ph-note">{t}</p>'
-VIDEO=f'<div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/{YT}" title="Michael LaPenna on The Catholic Bookworm" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>'
 
 ICON={
  'school':'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10 12 5l9 5-9 5-9-5Z"/><path d="M7 12.5V17c3 2 7 2 10 0v-4.5"/></svg>',
@@ -62,13 +58,11 @@ VISITS=[
  ('store','visit-bookstores-5.jpg','A display table of new books in a Barnes and Noble store','Bookstores','In-store readings and book signings for local readers.'),
 ]
 
-import json as _json
-ISBN={'baby-jesus-is-missing':'9781620209332','the-offering':'9781649603128','angelina-grace':'9781649606136','lauras-locker':'9798888706558','haddies-locket':'9798279096312'}
 BASE='https://liquid1188.github.io/michael-lapenna/'
 def ld(fname):
     person={"@type":"Person","@id":BASE+"#michael","name":"Michael LaPenna","jobTitle":"Author","url":BASE,"image":BASE+"assets/michael-lapenna.jpg","alumniOf":[{"@type":"CollegeOrUniversity","name":"Colby College"},{"@type":"CollegeOrUniversity","name":"Salem State University"}]}
     if fname=='books.html':
-        g=[person]+[{"@type":"Book","name":b['title'].replace('’',"'"),"author":{"@id":BASE+"#michael"},"isbn":ISBN[b['slug']],"datePublished":b['year'],"publisher":{"@type":"Organization","name":b['pub']},"image":BASE+"assets/"+b['cover'],"bookFormat":"https://schema.org/Paperback" if 'Hardcover' not in b['details'][0] else "https://schema.org/Hardcover"} for b in PUB]
+        g=[person]+[{"@type":"Book","name":b['title'].replace('’',"'"),"author":{"@id":BASE+"#michael"},"isbn":b["isbn"],"datePublished":b['year'],"publisher":{"@type":"Organization","name":b['pub']},"image":BASE+b["src"],"bookFormat":"https://schema.org/Paperback" if 'Hardcover' not in b['details'][0] else "https://schema.org/Hardcover"} for b in PUB if b["isbn"]]
     else: g=[person]
     return '<script type="application/ld+json">'+_json.dumps({"@context":"https://schema.org","@graph":g})+'</script>'
 
@@ -120,12 +114,11 @@ def page(fname,title,desc,body):
 '''
 
 def cover(b,cls='cv',lazy=True):
-    return f'<img class="{cls}" src="assets/{b["cover"]}" width="{b["w"]}" height="{b["h"]}" alt="Cover of {b["title"]}"{" loading=\"lazy\"" if lazy else ""}>'
+    return f'<img class="{cls}" src="{b["src"]}" width="{b["w"]}" height="{b["h"]}" alt="Cover of {b["title"]}"{" loading=\"lazy\"" if lazy else ""}>'
 def buys(b,cls='sm'): return '' if not b['buy'] else '<div class="buy">'+''.join(f'<a class="btn {cls}{" ghost" if i else ""}" href="{u}" target="_blank" rel="noopener">{t}</a>' for i,(t,u) in enumerate(b['buy']))+'</div>'
 def visit_cards(): return '<div class="v-grid">'+''.join(f'<article class="v-card"><img class="v-ph" src="assets/photos/{ph}" alt="{alt}" loading="lazy" width="1000" height="640"><div class="v-body"><h3>{t}</h3><p>{d}</p><a class="v-go" href="contact.html?topic={"signing" if k=="store" else "visit"}">{"Ask about a signing" if k=="store" else "Request a visit"}</a></div></article>' for k,ph,alt,t,d in VISITS)+'</div>'
 
 P={}
-q=L['quote']
 P['index.html']=('Michael LaPenna | Author of the LaRosa Sisters','Michael LaPenna is the author of the LaRosa Sisters, Catholic mysteries for young readers. He visits schools, libraries, book fairs, and bookstores.',f'''
 <section class="hero on-dark"><div class="wrap hero-in">
   <div class="hero-copy">
@@ -135,8 +128,8 @@ P['index.html']=('Michael LaPenna | Author of the LaRosa Sisters','Michael LaPen
     <div class="ctas"><a class="btn" href="books.html">Explore the books</a><a class="btn ghost-light" href="visits.html">Arrange an author visit</a></div>
   </div>
   <div class="hero-book">
-    <span class="badge">New · October 2026</span>
-    <a href="books.html#lauras-locker">{cover(L,'cv big',False)}</a>
+    {f'<span class="badge">{L["badge"]}</span>' if L["badge"] else ""}
+    <a href="books.html#{L["slug"]}">{cover(L,'cv big',False)}</a>
   </div>
 </div></section>
 
@@ -167,13 +160,12 @@ P['index.html']=('Michael LaPenna | Author of the LaRosa Sisters','Michael LaPen
 </div></section>
 
 <section class="band quote-band"><div class="wrap q-pair">
-  <blockquote class="big-q"><span class="q-on">On <i>Baby Jesus Is Missing</i></span><p>“One mark of a good children’s book is that it delights adults as well. I found <i>Baby Jesus Is Missing</i> to be such a book. … This is a fun faith-filled teaching story, full of surprises.”</p><cite><b>Kiki Latimer</b>, Catholic author and host of <i>The Catholic Bookworm</i></cite></blockquote>
-  <blockquote class="big-q"><span class="q-on">On <i>Laura’s Locker</i></span><p>“{q[0]}”</p><cite><b>{q[1]}</b>, {q[2]}</cite></blockquote>
+  {''.join(f'<blockquote class="big-q"><span class="q-on">On <i>{_html.escape(e["book"])}</i></span><p>“{md(e["quote"])}”</p><cite><b>{md(e["name"])}</b>, {md(e.get("credit",""))}</cite></blockquote>' for e in S.get("home_endorsements",[]))}
 </div></section>
 
 <section class="band on-dark"><div class="wrap">
   <div class="sec-h"><p class="kicker">Reading order</p><h2>The series so far</h2></div>
-  <ol class="order">{''.join(f'<li><a href="books.html#{b["slug"]}">{cover(b)}<span class="no">Book {b["n"]}{(" · "+b["year"]) if b["year"] else (" · Expected 2027" if b.get("soon") else "")}</span><b>{b["title"] if not b.get("ph") else "Title coming soon"}</b><span class="sm-t">{b["short"]}</span></a></li>' for b in BOOKS)}</ol>
+  <ol class="order">{''.join(f'<li><a href="books.html#{b["slug"]}">{cover(b)}<span class="no">{label(b)}</span><b>{b["title"]}</b><span class="sm-t">{b["short"]}</span></a></li>' for b in BOOKS)}</ol>
   <div class="center"><a class="btn gold" href="books.html">Explore the series</a></div>
 </div></section>
 
@@ -183,17 +175,17 @@ P['index.html']=('Michael LaPenna | Author of the LaRosa Sisters','Michael LaPen
   <div class="center"><a class="btn" href="contact.html?topic=visit">Plan a visit</a></div>
 </div></section>
 
-<section class="band on-dark media-band"><div class="wrap two">
-  {VIDEO}
-  <div><p class="kicker">On the air</p><h2>Michael on The Catholic Bookworm</h2>
-  <p>In an October 2026 interview on WCAT Radio’s <i>The Catholic Bookworm</i>, host Kiki Latimer speaks with Michael about <i>Baby Jesus Is Missing</i>, the book that introduced the LaRosa sisters.</p>
-  <div class="buy"><a class="btn sm" href="https://www.youtube.com/watch?v={YT}" target="_blank" rel="noopener">Watch on YouTube</a><a class="btn sm ghost-light" href="{SPREAKER}" target="_blank" rel="noopener">Listen to the episode</a></div></div>
-</div></section>
+{f'''<section class="band on-dark media-band"><div class="wrap two">
+  {video(FI)}
+  <div><p class="kicker">On the air</p><h2>Michael on {_html.escape(FI["show"])}</h2>
+  <p>{md(FI["summary"])}</p>
+  {ivbtns(FI,"ghost-light")}</div>
+</div></section>''' if FI else ""}
 
 <section class="band paper"><div class="wrap two author">
-  <img class="portrait" src="assets/michael-lapenna.jpg" width="573" height="720" alt="Michael LaPenna" loading="lazy">
+  <img class="portrait" src="{S["about"]["photo"]}" width="573" height="720" alt="Michael LaPenna" loading="lazy">
   <div class="prose"><p class="kicker dark">About the author</p><h2>From the classroom to the writing desk</h2>
-  <p>Before writing the LaRosa Sisters books, Michael spent 34 years teaching secondary school English north of Boston and coaching basketball and baseball. Today he writes mysteries for young readers.</p>
+  <p>{md(S["about"]["home_blurb"])}</p>
   <a class="btn ghost" href="about.html">Read the full biography</a></div>
 </div></section>
 
@@ -207,7 +199,7 @@ def bookrow(b):
     if b.get('quote'):
         qq=b['quote'];qb=f'<blockquote class="mini-q"><p>“{qq[0]}”</p><cite>{qq[1]}, {qq[2]}</cite></blockquote>'
     return f'''<article class="book" id="{b["slug"]}"><div class="cv-wrap">{cover(b)}</div><div>
-<span class="no">Book {b["n"]}{(" · "+b["year"]) if b["year"] else (" · Expected 2027" if b.get("soon") else "")}</span><h2>{b["title"] if not b.get("ph") else "Title coming soon"}</h2><p class="meta">{b["pub"]}</p>
+<span class="no">{label(b)}</span><h2>{b["title"]}</h2><p class="meta">{b["pub"]}</p>
 <p>{b["sum"]}</p>{qb}
 <ul class="facts">{''.join(f'<li>{d}</li>' for d in b["details"])}</ul>{buys(b)}</div></article>'''
 P['books.html']=('Books | Michael LaPenna','The LaRosa Sisters books by Michael LaPenna in reading order, with links to buy each one.',f'''
@@ -216,7 +208,7 @@ P['books.html']=('Books | Michael LaPenna','The LaRosa Sisters books by Michael 
 <section class="band white glance-band"><div class="wrap">
   <h2 class="glance-h">At a glance</h2>
   <div class="tbl-wrap"><table class="glance"><thead><tr><th>Book</th><th>Published</th><th>Length</th><th>Reading age</th><th>Formats</th></tr></thead><tbody>
-  {''.join(f'<tr><td><a href="#{b["slug"]}"><i>{b["title"]}</i></a><span>Book {b["n"]}</span></td><td data-l="Published">{(b["year"]+", "+b["pub"]) if b["year"] else ("Expected 2027" if b.get("soon") else "Coming soon")}</td><td data-l="Length">{b["pages"]}</td><td data-l="Reading age">{b["age"]}</td><td data-l="Formats">{b["formats"]}</td></tr>' for b in BOOKS)}
+  {''.join(f'<tr><td><a href="#{b["slug"]}"><i>{b["title"]}</i></a><span>Book {b["n"]}</span></td><td data-l="Published">{(b["year"]+", "+b["pub"]) if b["year"] else (b["exp"] or "Coming soon")}</td><td data-l="Length">{b["pages"]}</td><td data-l="Reading age">{b["age"]}</td><td data-l="Formats">{b["formats"]}</td></tr>' for b in BOOKS)}
   </tbody></table></div>
 </div></section>
 <section class="wrap books">{''.join(bookrow(b) for b in BOOKS)}</section>
@@ -232,8 +224,7 @@ P['visits.html']=('School Visits, Readings and Signings | Michael LaPenna','Invi
 <section class="band cream workshop" id="workshops"><div class="wrap two ws-grid">
   <figure class="ws-ph"><img src="assets/photos/writing-workshop.jpg" width="1000" height="640" alt="Students writing at their desks in a classroom" loading="lazy"></figure>
   <div class="prose"><p class="kicker dark">For schools</p><h2>Creative writing workshops</h2>
-    <p>Along with readings, Michael leads creative writing workshops for students, drawing on his 34 years of teaching English.</p>
-    <p>He has read at St. Mary’s School in Greenville on several occasions and led creative writing workshops for students there, and he has tabled his books at other venues as well. A workshop can be planned on its own or as part of a school visit.</p>
+    {''.join(f'<p>{md(t)}</p>' for t in S["visits"]["workshop"])}
     <a class="btn" href="contact.html?topic=workshop">Ask about a workshop</a>
   </div>
 </div></section>
@@ -241,8 +232,7 @@ P['visits.html']=('School Visits, Readings and Signings | Michael LaPenna','Invi
   <div class="prose"><h2>What to expect</h2>
     <ul class="ticks"><li>A reading from a LaRosa Sisters book suited to the audience</li><li>Time for readers to ask about the stories and characters</li><li>Book signing when copies are available</li></ul>
     <h2 class="sub-h">Fees and books</h2>
-    <p>Michael lives in the Greenville, South Carolina, area and spends December through April near Fort Lauderdale, Florida, so he is available for readings and signings in both places. He does not charge a speaking fee. For events farther from home, usually out of state, he asks only that his travel and lodging be covered.</p>
-    <p>He can bring copies of the books to sell and sign at your event. If you would like him to bring books, please give him a few weeks’ notice. Readers can also order copies online ahead of time and bring them to be signed.</p>
+    {''.join(f'<p>{md(t)}</p>' for t in S["visits"]["fees"])}
   </div>
   <div class="prose"><h2>Explore the books</h2>
     <ul class="age">{''.join(f'<li><a href="books.html#{b["slug"]}">{cover(b,"cv xs")}<div><b><i>{b["title"]}</i></b><span>{b["short"]}</span></div></a></li>' for b in BOOKS)}</ul>
@@ -258,38 +248,34 @@ P['visits.html']=('School Visits, Readings and Signings | Michael LaPenna','Invi
 P['about.html']=('About | Michael LaPenna','About Michael LaPenna, retired high school English teacher and author of the LaRosa Sisters series.',f'''
 <section class="page-h on-dark"><div class="wrap"><p class="kicker">About</p><h1>Michael LaPenna</h1></div></section>
 <section class="band paper"><div class="wrap two about">
-  <figure><img class="portrait" src="assets/michael-lapenna.jpg" width="573" height="720" alt="Michael LaPenna"></figure>
+  <figure><img class="portrait" src="{S["about"]["photo"]}" width="573" height="720" alt="Michael LaPenna"></figure>
   <div class="prose">
-    <p class="lede">Michael LaPenna grew up on the North Shore of Massachusetts and attended Colby College in Waterville, Maine. He later earned a master’s degree in American literature from Salem State University.</p>
-    <p>For 34 years, Michael taught secondary school English at a public school north of Boston, where he also coached basketball and baseball.</p>
-    <p>Since retiring, Michael has turned his attention to stories for young readers. His LaRosa Sisters series follows Catherine and Susanna Mae as they solve mysteries and wrestle with questions about honesty, friendship, and faith.</p>
-    <p>Michael and his wife, Patti, live in upstate South Carolina and spend part of each year in western Maine and southeastern Florida. Away from his writing desk, he enjoys visiting his three granddaughters, splitting wood, reading, and keeping up with Boston sports.</p>
+    {''.join(f'<p{" class=\"lede\"" if i==0 else ""}>{md(t)}</p>' for i,t in enumerate(S["about"]["paragraphs"]))}
   </div>
 </div></section>''')
 
 P['media.html']=('Media | Michael LaPenna','Interviews with Michael LaPenna and a press kit with cover images, author photo, and short bio.',f'''
 <section class="page-h on-dark"><div class="wrap"><p class="kicker">Media</p><h1>Interviews and media resources</h1></div></section>
-<section class="band white"><div class="wrap two media-item">
-  {VIDEO}
-  <div><span class="no">The Catholic Bookworm · WCAT Radio · October 13, 2026</span><h2>Talking about <i>Baby Jesus Is Missing</i></h2>
-  <p>In this October 2026 episode of <i>The Catholic Bookworm</i>, host Kiki Latimer talks with Michael about the Christmas mystery that introduced Catherine and Susanna Mae LaRosa.</p>
-  <div class="buy"><a class="btn sm" href="https://www.youtube.com/watch?v={YT}" target="_blank" rel="noopener">Watch on YouTube</a><a class="btn sm ghost" href="{SPREAKER}" target="_blank" rel="noopener">Listen to the episode</a></div></div>
-</div></section>
+{''.join(f'''<section class="band white"><div class="wrap two media-item">
+  {video(v)}
+  <div><span class="no">{" · ".join(_html.escape(x) for x in [v.get("show",""),v.get("outlet",""),v.get("date","")] if x)}</span><h2>{md(v["title"])}</h2>
+  <p>{md(v["summary"])}</p>
+  {ivbtns(v)}</div>
+</div></section>''' for v in IV if v.get("youtube_id"))}
+{('<section class="band white more-iv"><div class="wrap"><h2 class="kit-h">More interviews and coverage</h2><div class="iv-list">'+''.join(f'<article class="iv"><span class="no">{" · ".join(_html.escape(x) for x in [v.get("show",""),v.get("outlet",""),v.get("date","")] if x)}</span><h3>{md(v["title"])}</h3><p>{md(v["summary"])}</p>{ivbtns(v)}</article>' for v in IV if not v.get("youtube_id"))+'</div></div></section>') if any(not v.get("youtube_id") for v in IV) else ""}
 <section class="band paper"><div class="wrap">
   <div class="sec-h"><p class="kicker dark">For schools, bookstores, and press</p><h2>Press kit</h2><p>Download an author photograph, book covers, and a short biography for event announcements, newsletters, and media coverage.</p></div>
   <div class="kit">
     <a class="kit-photo" href="assets/michael-lapenna.jpg" target="_blank" rel="noopener"><img src="assets/michael-lapenna.jpg" width="573" height="720" alt="Author photo of Michael LaPenna" loading="lazy"><span>Author photo</span></a>
-    <div class="kit-bio"><h3>Short bio</h3><p>Michael LaPenna is the author of the LaRosa Sisters mystery series for young readers. He graduated from Colby College and earned a master’s degree in American literature from Salem State University. After 34 years teaching secondary school English and coaching basketball and baseball north of Boston, he now lives in upstate South Carolina.</p></div>
+    <div class="kit-bio"><h3>Short bio</h3><p>{md(S["about"]["short_bio"])}</p></div>
   </div>
   <h3 class="kit-h">Endorsements</h3>
   <div class="kit-quotes">
-    <blockquote><p>“One mark of a good children’s book is that it delights adults as well. I found <i>Baby Jesus Is Missing</i> to be such a book.”</p><cite><b>Kiki Latimer</b>, on <i>Baby Jesus Is Missing</i></cite></blockquote>
-    <blockquote><p>“Michael LaPenna has given us a charming mystery story that unfolds the deeper mysteries about growing up, caring for others and learning to forgive and be reconciled.”</p><cite><b>Fr. Dwight Longenecker</b>, on <i>Angelina Grace</i></cite></blockquote>
-    <blockquote><p>“Michael LaPenna invites young readers into a compelling encounter with conscience, courage, and grace.”</p><cite><b>Dr. Sebastian Mahfood, OP</b>, on <i>Laura’s Locker</i></cite></blockquote>
+    {''.join(f'<blockquote><p>“{md(e["quote"])}”</p><cite><b>{md(e["name"])}</b>, on <i>{_html.escape(e["book"])}</i></cite></blockquote>' for e in S.get("press_endorsements",[]))}
   </div>
   <h3 class="kit-h">Book covers</h3>
   <div class="kit-covers">
-    {''.join(f'<a class="kit-img" href="assets/{b["cover"]}" target="_blank" rel="noopener">{cover(b)}<span><i>{b["title"]}</i></span></a>' for b in PUB)}
+    {''.join(f'<a class="kit-img" href="{b["src"]}" target="_blank" rel="noopener">{cover(b)}<span><i>{b["title"]}</i></span></a>' for b in PUB)}
   </div>
 </div></section>''')
 

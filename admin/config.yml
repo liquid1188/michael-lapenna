@@ -1,0 +1,127 @@
+backend:
+  name: github
+  repo: liquid1188/michael-lapenna
+  branch: main
+  commit_messages:
+    update: "Update {{collection}}"
+media_folder: assets/uploads
+public_folder: assets/uploads
+site_url: https://liquid1188.github.io/michael-lapenna/
+display_url: https://liquid1188.github.io/michael-lapenna/
+logo_url: https://liquid1188.github.io/michael-lapenna/assets/michael-lapenna.jpg
+
+collections:
+
+  - name: books
+    label: Books
+    description: "Your books, in reading order. Drag to reorder. Save, and the site updates in about two minutes. Put a word in *asterisks* to make it italic. Every change is saved and can be undone from Site history."
+    files:
+      - name: books
+        label: The LaRosa Sisters books
+        file: content/books.json
+        fields:
+          - name: books
+            label: Books (in reading order)
+            label_singular: Book
+            widget: list
+            collapsed: true
+            summary: "{{fields.title}} · {{fields.status}}"
+            fields:
+              - { name: title, label: Title }
+              - { name: slug, label: Web address name, hint: "Lowercase words joined by hyphens, like lauras-locker. Set once; don't change it after the book is on the site." }
+              - { name: status, label: Status, widget: select, options: [Published, Coming soon], default: Published }
+              - { name: year, label: Year published, required: false, hint: "Leave blank for a book that isn't out yet." }
+              - { name: expected, label: Expected (for upcoming books), required: false, hint: "For example: Expected 2027" }
+              - { name: publisher, label: Publisher, required: false }
+              - { name: cover, label: Cover image, widget: image, required: false, hint: "Upload the front cover. A tall image works best." }
+              - { name: tagline, label: One-line description, hint: "Shows under the title on the home page, like: A Christmas mystery" }
+              - { name: summary, label: Summary, widget: text }
+              - { name: pages, label: Length, required: false, hint: "For example: 75 pages" }
+              - { name: reading_age, label: Reading age, required: false, hint: "For example: 7 to 12" }
+              - { name: formats, label: Formats, required: false, hint: "For example: Paperback, Kindle" }
+              - { name: details, label: Detail tags, widget: list, required: false, hint: "Short facts shown as tags, like Paperback, 75 pages" }
+              - name: buy
+                label: Buy buttons
+                label_singular: Button
+                widget: list
+                required: false
+                summary: "{{fields.label}}"
+                fields:
+                  - { name: label, label: Button text, hint: "For example: Paperback, Kindle, Barnes & Noble" }
+                  - { name: url, label: Link }
+              - name: endorsement
+                label: Endorsement (shown with this book)
+                widget: object
+                required: false
+                collapsed: true
+                fields:
+                  - { name: quote, label: Quote, widget: text, required: false, hint: "Without quotation marks." }
+                  - { name: name, label: Name, required: false }
+                  - { name: credit, label: Who they are, required: false, hint: "For example: author of *Immortal Combat*" }
+              - { name: isbn, label: ISBN-13, required: false, hint: "Helps search engines. Numbers only." }
+              - { name: featured, label: Feature on the home page, widget: boolean, default: false, hint: "Shows this cover at the top of the home page. Turn it on for one book only." }
+              - { name: badge, label: Home page badge, required: false, hint: "For the featured book, like: New · October 2026" }
+
+  - name: pages
+    label: Page text
+    description: "Endorsements, interviews, visits, and your bio. Put a word in *asterisks* to make it italic."
+    files:
+      - name: site
+        label: Endorsements, interviews, visits, and bio
+        file: content/site.json
+        fields:
+          - name: home_endorsements
+            label: Home page endorsements
+            label_singular: Endorsement
+            widget: list
+            summary: "{{fields.name}} on {{fields.book}}"
+            hint: "Two look best side by side."
+            fields:
+              - { name: book, label: Book title }
+              - { name: quote, label: Quote, widget: text, hint: "Without quotation marks. Use … to mark a cut." }
+              - { name: name, label: Name }
+              - { name: credit, label: Who they are, required: false }
+          - name: press_endorsements
+            label: Press kit endorsements (short)
+            label_singular: Endorsement
+            widget: list
+            summary: "{{fields.name}} on {{fields.book}}"
+            fields:
+              - { name: book, label: Book title }
+              - { name: quote, label: Short quote, widget: text }
+              - { name: name, label: Name }
+          - name: interviews
+            label: Interviews (Media page)
+            label_singular: Interview
+            widget: list
+            summary: "{{fields.show}} · {{fields.date}}"
+            fields:
+              - { name: show, label: Show or station }
+              - { name: outlet, label: Network, required: false }
+              - { name: date, label: Date, required: false, hint: "For example: October 13, 2026" }
+              - { name: title, label: Headline }
+              - { name: summary, label: Description, widget: text }
+              - { name: youtube_id, label: YouTube video ID, required: false, hint: "The letters after watch?v= in a YouTube link." }
+              - { name: listen_url, label: Listen link, required: false }
+              - { name: featured, label: Show on the home page, widget: boolean, default: false, hint: "Needs a YouTube video. Turn it on for one interview only." }
+          - name: visits
+            label: Visits page
+            widget: object
+            fields:
+              - { name: workshop, label: Creative writing workshops (paragraphs), widget: list, field: { name: p, label: Paragraph, widget: text } }
+              - { name: fees, label: Fees and books (paragraphs), widget: list, field: { name: p, label: Paragraph, widget: text } }
+          - name: about
+            label: About
+            widget: object
+            fields:
+              - { name: photo, label: Author photo, widget: image }
+              - { name: paragraphs, label: Full biography (About page), widget: list, field: { name: p, label: Paragraph, widget: text } }
+              - { name: home_blurb, label: Home page bio, widget: text }
+              - { name: short_bio, label: Press kit short bio, widget: text }
+          - name: contact
+            label: Contact form
+            widget: object
+            collapsed: true
+            fields:
+              - { name: form_on, label: Form is on, widget: boolean, default: true }
+              - { name: web3forms_key, label: Web3Forms access key, hint: "Set by Andrew. Leave as is." }

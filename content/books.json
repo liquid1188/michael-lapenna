@@ -1,0 +1,232 @@
+{
+  "books": [
+    {
+      "title": "Baby Jesus Is Missing",
+      "slug": "baby-jesus-is-missing",
+      "status": "Published",
+      "year": "2020",
+      "expected": "",
+      "publisher": "Ambassador International",
+      "pages": "44 pages",
+      "reading_age": "7 to 12",
+      "formats": "Hardcover, Paperback, Kindle",
+      "tagline": "A Christmas mystery",
+      "summary": "Early in December, Nativity figures begin disappearing across Reedy River. When a $500 reward is offered for catching the thief, Catherine and Susanna Mae decide to investigate. What begins as a Christmas mystery soon becomes a test of their judgment.",
+      "details": [
+        "Hardcover, 44 pages",
+        "Paperback and Kindle",
+        "Illustrated by Chris Jackson",
+        "Reading age 7 to 12"
+      ],
+      "cover": "assets/cover-baby-jesus-is-missing.jpg",
+      "isbn": "9781620209332",
+      "buy": [
+        {
+          "label": "Hardcover",
+          "url": "https://www.amazon.com/dp/1620209330"
+        },
+        {
+          "label": "Paperback",
+          "url": "https://www.amazon.com/dp/1649601468"
+        },
+        {
+          "label": "Kindle",
+          "url": "https://www.amazon.com/dp/B08PBYHGYH"
+        },
+        {
+          "label": "Barnes & Noble",
+          "url": "https://www.barnesandnoble.com/w/baby-jesus-is-missing-michael-lapenna/1138393399?ean=9781620209332"
+        },
+        {
+          "label": "Publisher",
+          "url": "https://ambassador-international.com/books/baby-jesus-is-missing/"
+        }
+      ],
+      "featured": false,
+      "badge": "",
+      "endorsement": {
+        "quote": "One mark of a good children’s book is that it delights adults as well. I found *Baby Jesus Is Missing* to be such a book. Author Michael LaPenna introduces us to sisters Catherine and Susanna Mae as they solve the local town crime of the stolen baby Jesus figurines while also introducing us to the slang of the criminal and detective world in hilarious jaunts of language. The girls soon discover that one’s vocation, even crime solving, requires faith, virtue, and sacrifice. This is a fun faith-filled teaching story, full of surprises, and part of a book series that helps us all find the Baby Jesus and keep him in our lives.",
+        "name": "Kiki Latimer",
+        "credit": "Catholic author and host of *The Catholic Bookworm*"
+      }
+    },
+    {
+      "title": "The Offering",
+      "slug": "the-offering",
+      "status": "Published",
+      "year": "2023",
+      "expected": "",
+      "publisher": "Ambassador International",
+      "pages": "61 pages",
+      "reading_age": "7 to 12",
+      "formats": "Paperback, Hardcover, Kindle",
+      "tagline": "A mountain adventure",
+      "summary": "While visiting their grandparents in the mountains, Catherine and Susanna Mae discover a rusted tin full of money. Then their border collie, Atticus, chases a bear cub into woods their grandfather has warned them to avoid. Should they obey his warning or go after their dog?",
+      "details": [
+        "Paperback, 61 pages",
+        "Hardcover and Kindle",
+        "Reading age 7 to 12"
+      ],
+      "cover": "assets/cover-the-offering.jpg",
+      "isbn": "9781649603128",
+      "buy": [
+        {
+          "label": "Paperback",
+          "url": "https://www.amazon.com/dp/1649603126"
+        },
+        {
+          "label": "Hardcover",
+          "url": "https://www.amazon.com/dp/1649605870"
+        },
+        {
+          "label": "Kindle",
+          "url": "https://www.amazon.com/dp/B0C9KLXPFF"
+        },
+        {
+          "label": "Barnes & Noble",
+          "url": "https://www.barnesandnoble.com/w/the-offering-michael-lapenna/1143777727?ean=9781649605870"
+        },
+        {
+          "label": "Publisher",
+          "url": "https://ambassador-international.com/books/the-offering/"
+        }
+      ],
+      "featured": false,
+      "badge": ""
+    },
+    {
+      "title": "Angelina Grace",
+      "slug": "angelina-grace",
+      "status": "Published",
+      "year": "2025",
+      "expected": "",
+      "publisher": "Ambassador International",
+      "pages": "161 pages",
+      "reading_age": "8 to 14",
+      "formats": "Paperback, Kindle",
+      "tagline": "An autumn mystery",
+      "summary": "One autumn afternoon, Catherine meets Ulga, a young woman living alone in a secluded hollow outside town. As the sisters get to know her, they begin to wonder about her circumstances and what they can do to help her stay safe.",
+      "details": [
+        "Paperback, 161 pages",
+        "Kindle",
+        "Reading age 8 to 14"
+      ],
+      "cover": "assets/cover-angelina-grace.jpg",
+      "isbn": "9781649606136",
+      "buy": [
+        {
+          "label": "Paperback",
+          "url": "https://www.amazon.com/dp/1649606133"
+        },
+        {
+          "label": "Kindle",
+          "url": "https://www.amazon.com/dp/B0G4DMMJ9V"
+        },
+        {
+          "label": "Publisher",
+          "url": "https://ambassador-international.com/books/angelina-grace/"
+        }
+      ],
+      "featured": false,
+      "badge": "",
+      "endorsement": {
+        "quote": "Michael LaPenna has given us a charming mystery story that unfolds the deeper mysteries about growing up, caring for others and learning to forgive and be reconciled. Join Susanna Mae and her sister Catherine as they solve the mystery of the strange girl in the woods and the stranger men who are searching for her. Written with clear simplicity, LaPenna has a gift for story telling that will attract and absorb the attention of young readers.",
+        "name": "Fr. Dwight Longenecker",
+        "credit": "author of *Immortal Combat* and *Beheading Hydra* and the blog *Standing on My Head*"
+      }
+    },
+    {
+      "title": "Haddie’s Locket",
+      "slug": "haddies-locket",
+      "status": "Published",
+      "year": "2026",
+      "expected": "",
+      "publisher": "Independently published",
+      "pages": "75 pages",
+      "reading_age": "7 to 12",
+      "formats": "Paperback",
+      "tagline": "A story about a family keepsake",
+      "summary": "When the girls’ great-grandmother Haddie comes to visit, Catherine borrows her locket while Haddie is away on a short trip, and the locket goes missing. It is the last keepsake Haddie has of her late husband. Catherine dreads telling her, until an old map leads to an adventure and a possible way to make things right.",
+      "details": [
+        "Paperback, 75 pages",
+        "Reading age 7 to 12"
+      ],
+      "cover": "assets/cover-haddies-locket.jpg",
+      "isbn": "9798279096312",
+      "buy": [
+        {
+          "label": "Paperback",
+          "url": "https://www.amazon.com/dp/B0GCJK65KQ"
+        }
+      ],
+      "featured": false,
+      "badge": ""
+    },
+    {
+      "title": "Laura’s Locker",
+      "slug": "lauras-locker",
+      "status": "Published",
+      "year": "2026",
+      "expected": "",
+      "publisher": "En Route Books and Media",
+      "pages": "191 pages",
+      "reading_age": "7 to 12",
+      "formats": "Paperback, Kindle, Audible",
+      "tagline": "A story about telling the truth",
+      "summary": "Susanna Mae sees a classmate framed for cheating. She knows what happened, but speaking up could cost her a friendship. During a visit to her grandparents in Gloucester, Massachusetts, she encounters mysterious woods and old legends. Back at school, the harder challenge remains.",
+      "details": [
+        "Paperback, 191 pages",
+        "Kindle and Audible",
+        "Reading age 7 to 12"
+      ],
+      "cover": "assets/cover-lauras-locker.jpg",
+      "isbn": "9798888706558",
+      "buy": [
+        {
+          "label": "Paperback",
+          "url": "https://www.amazon.com/dp/B0HPS6LFQ8"
+        },
+        {
+          "label": "Kindle",
+          "url": "https://www.amazon.com/dp/B0HMDQLXDR"
+        },
+        {
+          "label": "Audible",
+          "url": "https://www.audible.com/pd/Audiobook/B0HL6SZ6DQ"
+        },
+        {
+          "label": "Publisher",
+          "url": "https://enroutebooksandmedia.com/lauraslocker/"
+        }
+      ],
+      "featured": true,
+      "badge": "New · October 2026",
+      "endorsement": {
+        "quote": "Michael LaPenna invites young readers into a compelling encounter with conscience, courage, and grace. *Laura’s Locker* reveals how faith strengthens the heart to confront injustice, embrace truth, and discover the healing power of authentic friendship.",
+        "name": "Dr. Sebastian Mahfood, OP",
+        "credit": "author of *The Narrative Spirituality of Dante’s Divine Comedy*"
+      }
+    },
+    {
+      "title": "A Frowning Providence",
+      "slug": "a-frowning-providence",
+      "status": "Coming soon",
+      "year": "",
+      "expected": "Expected 2027",
+      "publisher": "",
+      "pages": "",
+      "reading_age": "",
+      "formats": "",
+      "tagline": "The next LaRosa Sisters book",
+      "summary": "The sixth LaRosa Sisters book is in the works. Details and a cover will be added here when it is published.",
+      "details": [
+        "Publication date to be announced"
+      ],
+      "cover": "assets/cover-a-frowning-providence.jpg",
+      "isbn": "",
+      "buy": [],
+      "featured": false,
+      "badge": ""
+    }
+  ]
+}

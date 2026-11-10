@@ -1,0 +1,31 @@
+name: Build site
+# Rebuilds the HTML pages whenever the editor (or anyone) changes content, the build script, or styles.
+on:
+  push:
+    branches: [main]
+    paths: ['content/**', '_build.py', 'assets/site.css', 'assets/site.js', 'assets/uploads/**']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: build-site
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - run: pip install pillow
+      - run: python _build.py
+      - name: Commit rebuilt pages
+        run: |
+          if [ -n "$(git status --porcelain -- '*.html')" ]; then
+            git config user.name "build-bot"
+            git config user.email "build-bot@users.noreply.github.com"
+            git add -- '*.html'
+            git commit -m "Rebuild pages"
+            git pull --rebase
+            git push
+          fi

@@ -1,0 +1,80 @@
+{
+  "home_endorsements": [
+    {
+      "book": "Baby Jesus Is Missing",
+      "quote": "One mark of a good children’s book is that it delights adults as well. I found *Baby Jesus Is Missing* to be such a book. … This is a fun faith-filled teaching story, full of surprises.",
+      "name": "Kiki Latimer",
+      "credit": "Catholic author and host of *The Catholic Bookworm*"
+    },
+    {
+      "book": "Laura’s Locker",
+      "quote": "Michael LaPenna invites young readers into a compelling encounter with conscience, courage, and grace. *Laura’s Locker* reveals how faith strengthens the heart to confront injustice, embrace truth, and discover the healing power of authentic friendship.",
+      "name": "Dr. Sebastian Mahfood, OP",
+      "credit": "author of *The Narrative Spirituality of Dante’s Divine Comedy*"
+    }
+  ],
+  "press_endorsements": [
+    {
+      "book": "Baby Jesus Is Missing",
+      "quote": "One mark of a good children’s book is that it delights adults as well. I found *Baby Jesus Is Missing* to be such a book.",
+      "name": "Kiki Latimer"
+    },
+    {
+      "book": "Angelina Grace",
+      "quote": "Michael LaPenna has given us a charming mystery story that unfolds the deeper mysteries about growing up, caring for others and learning to forgive and be reconciled.",
+      "name": "Fr. Dwight Longenecker"
+    },
+    {
+      "book": "Laura’s Locker",
+      "quote": "Michael LaPenna invites young readers into a compelling encounter with conscience, courage, and grace.",
+      "name": "Dr. Sebastian Mahfood, OP"
+    }
+  ],
+  "interviews": [
+    {
+      "show": "The Catholic Bookworm",
+      "outlet": "WCAT Radio",
+      "date": "October 13, 2026",
+      "title": "Talking about *Baby Jesus Is Missing*",
+      "summary": "In this October 2026 episode of *The Catholic Bookworm*, host Kiki Latimer talks with Michael about the Christmas mystery that introduced Catherine and Susanna Mae LaRosa.",
+      "youtube_id": "POn3cG_RTKs",
+      "listen_url": "https://www.spreaker.com/episode/episode-330-michael-lapenna-on-his-book-baby-jesus-is-missing-october-13-2026--75766588",
+      "featured": true
+    },
+    {
+      "show": "Catholic Radio in South Carolina",
+      "outlet": "Mediatrix SC",
+      "date": "",
+      "title": "Interviews with Michael Brennan",
+      "summary": "Michael has been a guest three times on Catholic Radio in South Carolina, interviewed by Michael Brennan.",
+      "youtube_id": "",
+      "listen_url": "",
+      "featured": false
+    }
+  ],
+  "visits": {
+    "workshop": [
+      "Along with readings, Michael leads creative writing workshops for students, drawing on his 34 years of teaching English.",
+      "He has read at St. Mary’s School in Greenville on several occasions and led creative writing workshops for students there, and he has tabled his books at other venues as well. A workshop can be planned on its own or as part of a school visit."
+    ],
+    "fees": [
+      "Michael lives in the Greenville, South Carolina, area and spends December through April near Fort Lauderdale, Florida, so he is available for readings and signings in both places. He does not charge a speaking fee. For events farther from home, usually out of state, he asks only that his travel and lodging be covered.",
+      "He can bring copies of the books to sell and sign at your event. If you would like him to bring books, please give him a few weeks’ notice. Readers can also order copies online ahead of time and bring them to be signed."
+    ]
+  },
+  "about": {
+    "paragraphs": [
+      "Michael LaPenna grew up on the North Shore of Massachusetts and attended Colby College in Waterville, Maine. He later earned a master’s degree in American literature from Salem State University.",
+      "For 34 years, Michael taught secondary school English at a public school north of Boston, where he also coached basketball and baseball.",
+      "Since retiring, Michael has turned his attention to stories for young readers. His LaRosa Sisters series follows Catherine and Susanna Mae as they solve mysteries and wrestle with questions about honesty, friendship, and faith.",
+      "Michael and his wife, Patti, live in upstate South Carolina and spend part of each year in western Maine and southeastern Florida. Away from his writing desk, he enjoys visiting his three granddaughters, splitting wood, reading, and keeping up with Boston sports."
+    ],
+    "home_blurb": "Before writing the LaRosa Sisters books, Michael spent 34 years teaching secondary school English north of Boston and coaching basketball and baseball. Today he writes mysteries for young readers.",
+    "short_bio": "Michael LaPenna is the author of the LaRosa Sisters mystery series for young readers. He graduated from Colby College and earned a master’s degree in American literature from Salem State University. After 34 years teaching secondary school English and coaching basketball and baseball north of Boston, he now lives in upstate South Carolina.",
+    "photo": "assets/michael-lapenna.jpg"
+  },
+  "contact": {
+    "web3forms_key": "cb64777c-8b27-489a-93d0-ac578fdd586d",
+    "form_on": true
+  }
+}

@@ -401,3 +401,11 @@ footer{border-top:3px solid var(--gold)}
 .ws-grid{align-items:center;gap:56px}
 .ws-ph{margin:0}.ws-ph img{width:100%;height:auto;border-radius:3px;box-shadow:0 24px 50px -24px rgba(0,0,0,.45);display:block}
 .workshop .btn{margin-top:10px}
+.media-text{max-width:780px}
+.media-text h2{margin:6px 0 10px}
+.more-iv{padding-top:0}
+.more-iv .kit-h{margin-top:0}
+.iv-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px}
+.iv{background:var(--cream);border:1px solid var(--rule);border-left:3px solid var(--gold);padding:20px 22px}
+.iv h3{font-size:22px;margin:6px 0 8px}.iv p{font-size:16px;color:var(--ink-2)}
+.iv .no{color:var(--brick)}
