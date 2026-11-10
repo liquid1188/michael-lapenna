@@ -104,6 +104,32 @@ collections:
               - { name: youtube_id, label: YouTube video ID, required: false, hint: "The letters after watch?v= in a YouTube link." }
               - { name: listen_url, label: Listen link, required: false }
               - { name: featured, label: Show on the home page, widget: boolean, default: false, hint: "Needs a YouTube video. Turn it on for one interview only." }
+          - name: why_i_write
+            label: Why I write (About page)
+            widget: list
+            required: false
+            hint: "Each item is a paragraph. The section appears on the About page once you add one."
+            field: { name: p, label: Paragraph, widget: text }
+          - name: faq
+            label: Frequently asked questions (About page)
+            label_singular: Question
+            widget: list
+            required: false
+            summary: "{{fields.q}}"
+            hint: "The section appears on the About page once you add a question."
+            fields:
+              - { name: q, label: Question }
+              - { name: a, label: Answer, widget: text, hint: "Leave a blank line between paragraphs." }
+          - name: event_photos
+            label: Event photos (Visits page)
+            label_singular: Photo
+            widget: list
+            required: false
+            summary: "{{fields.caption}}"
+            hint: "Photos from readings and signings. The section appears on the Visits page once you add one. Ask before posting photos that show children's faces."
+            fields:
+              - { name: image, label: Photo, widget: image }
+              - { name: caption, label: Caption, required: false, hint: "For example: Reading at St. Mary's School, Greenville" }
           - name: visits
             label: Visits page
             widget: object

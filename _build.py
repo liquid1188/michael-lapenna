@@ -106,7 +106,7 @@ def page(fname,title,desc,body):
     <div><h3>Publishers</h3><ul><li><a href="https://ambassador-international.com/book-author/michael-lapenna/" target="_blank" rel="noopener">Ambassador International</a></li><li><a href="https://enroutebooksandmedia.com/lauraslocker/" target="_blank" rel="noopener">En Route Books and Media</a></li></ul></div>
   </div>
   <div class="wrap"><p class="f-credits">Photos: USAG-Humphreys on Flickr, CC BY 2.0; oddharmonic and brewbooks, CC BY-SA 2.0; D Coetzee, CC0. Woods photo by Johannes Plenio, CC0.</p>
-  <div class="f-base"><span>© 2026 Michael LaPenna</span><button type="button" class="vp-toggle">View desktop version</button><a href="https://lickitysplitweb.com" target="_blank" rel="noopener">Site by Lickity Split Web Design</a></div></div>
+  <div class="f-base"><span>© 2026 Michael LaPenna</span><button type="button" class="vp-toggle">View desktop version</button><a href="admin/" rel="nofollow">Site editor</a><a href="https://lickitysplitweb.com" target="_blank" rel="noopener">Site by Lickity Split Web Design</a></div></div>
 </footer>
 <script src="assets/site.js?v={JSV}"></script>
 </body>
@@ -228,6 +228,7 @@ P['visits.html']=('School Visits, Readings and Signings | Michael LaPenna','Invi
     <a class="btn" href="contact.html?topic=workshop">Ask about a workshop</a>
   </div>
 </div></section>
+{(f'<section class="band white ev-photos"><div class="wrap"><div class="sec-h"><p class="kicker dark">At recent events</p><h2>Readings and signings</h2></div><div class="ev-grid">'+''.join(f'<figure><img src="{x["image"]}" alt="{_html.escape(strip(x.get("caption","")) or "Michael LaPenna at a reading")}" loading="lazy">'+(f'<figcaption>{md(x["caption"])}</figcaption>' if x.get("caption") else "")+'</figure>' for x in S.get("event_photos",[]) if x.get("image"))+'</div></div></section>') if any(x.get("image") for x in S.get("event_photos",[])) else ""}
 <section class="band paper"><div class="wrap two visit-detail">
   <div class="prose"><h2>What to expect</h2>
     <ul class="ticks"><li>A reading from a LaRosa Sisters book suited to the audience</li><li>Time for readers to ask about the stories and characters</li><li>Book signing when copies are available</li></ul>
@@ -252,7 +253,9 @@ P['about.html']=('About | Michael LaPenna','About Michael LaPenna, retired high 
   <div class="prose">
     {''.join(f'<p{" class=\"lede\"" if i==0 else ""}>{md(t)}</p>' for i,t in enumerate(S["about"]["paragraphs"]))}
   </div>
-</div></section>''')
+</div></section>
+{(f'<section class="band white why"><div class="wrap narrow prose"><p class="kicker dark">In his words</p><h2>Why I write</h2>'+''.join(f'<p>{md(t)}</p>' for t in S.get("why_i_write",[]))+'</div></section>') if S.get("why_i_write") else ""}
+{(f'<section class="band paper faq"><div class="wrap narrow"><p class="kicker dark">Questions</p><h2>Frequently asked questions</h2>'+''.join(f'<details class="qa"><summary>{md(x["q"])}</summary><div class="prose">'+''.join(f'<p>{md(t)}</p>' for t in (x.get("a") or "").split("\n\n") if t.strip())+'</div></details>' for x in S.get("faq",[]) if x.get("q"))+'</div></section>') if S.get("faq") else ""}''')
 
 P['media.html']=('Media | Michael LaPenna','Interviews with Michael LaPenna and a press kit with cover images, author photo, and short bio.',f'''
 <section class="page-h on-dark"><div class="wrap"><p class="kicker">Media</p><h1>Interviews and media resources</h1></div></section>

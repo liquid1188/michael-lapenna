@@ -409,3 +409,17 @@ footer{border-top:3px solid var(--gold)}
 .iv{background:var(--cream);border:1px solid var(--rule);border-left:3px solid var(--gold);padding:20px 22px}
 .iv h3{font-size:22px;margin:6px 0 8px}.iv p{font-size:16px;color:var(--ink-2)}
 .iv .no{color:var(--brick)}
+.wrap.narrow{max-width:780px}
+.faq .qa{border-top:1px solid var(--rule);padding:4px 0}
+.faq .qa:last-child{border-bottom:1px solid var(--rule)}
+.faq summary{cursor:pointer;list-style:none;font-family:var(--serif);font-size:21px;padding:16px 32px 16px 0;position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:after{content:"+";position:absolute;right:4px;top:12px;font-size:26px;color:var(--brick)}
+.faq details[open] summary:after{content:"−"}
+.faq .prose{padding:0 0 14px}
+.ev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.ev-grid figure{margin:0}.ev-grid img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:3px;display:block}
+.ev-grid figcaption{font-size:14.5px;color:var(--ink-3);margin-top:8px}
+@media (max-width:800px){.ev-grid{grid-template-columns:1fr 1fr;gap:12px}}
+.f-base a[href="admin/"]{color:rgba(255,255,255,.6);margin-left:auto}
+.f-base a[href="admin/"]:hover{color:#fff}
