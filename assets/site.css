@@ -358,7 +358,7 @@ footer{border-top:3px solid var(--gold)}
 .intro-ph img{width:480px;height:auto;aspect-ratio:3/2;object-fit:cover}
 .f-credits{font-size:12px;color:rgba(255,255,255,.5);padding-top:16px}
 @media (max-width:900px){.intro-ph img{width:100%;height:auto}}
-.order{grid-template-columns:repeat(5,1fr);gap:22px}
+.order{grid-template-columns:repeat(6,1fr);gap:20px}
 .order b{font-size:20px}
 @media (max-width:900px){.order{grid-template-columns:repeat(2,1fr)}}
 .kit-covers{align-items:start}

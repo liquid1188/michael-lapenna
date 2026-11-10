@@ -42,6 +42,7 @@ PLACE=dict(n=4,slug='haddies-locket',pages='75 pages',age='7 to 12',formats='Pap
   buy=[('Paperback',AMZ+'B0GCJK65KQ')])
 BOOKS=BOOKS[:3]+[PLACE]+BOOKS[3:]
 PUB=BOOKS[:]
+BOOKS.append(dict(n=6,slug='a-frowning-providence',pages='—',age='—',formats='—',title='A Frowning Providence',short='The next LaRosa Sisters book',pub='Forthcoming',year='',details=['Publication date to be announced'],cover='cover-a-frowning-providence.jpg',w=700,h=1120,sum='The sixth LaRosa Sisters book is in the works. Details and a cover will be added here when it is published.',buy=[],soon=True))
 L=BOOKS[4]
 PH=lambda t:f'<p class="ph-note">{t}</p>'
 VIDEO=f'<div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/{YT}" title="Michael LaPenna on The Catholic Bookworm" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>'
@@ -128,7 +129,7 @@ P['index.html']=('Michael LaPenna | Author of the LaRosa Sisters','Michael LaPen
   <div class="hero-copy">
     <p class="kicker">The LaRosa Sisters · Mysteries and adventures for young readers</p>
     <h1>Two sisters. One mystery after another.</h1>
-    <p class="lede">Meet Catherine and Susanna Mae LaRosa. Between missing Nativity figures, a dog in danger, and a classmate falsely accused, the sisters have plenty of mysteries to untangle. Michael LaPenna’s five-book series brings together adventure, family, and Catholic faith.</p>
+    <p class="lede">Meet Catherine and Susanna Mae LaRosa. Between missing Nativity figures, a dog in danger, and a classmate falsely accused, the sisters have plenty of mysteries to untangle. Michael LaPenna’s series brings together adventure, family, and Catholic faith.</p>
     <div class="ctas"><a class="btn" href="books.html">Explore the books</a><a class="btn ghost-light" href="visits.html">Arrange an author visit</a></div>
   </div>
   <div class="hero-book">
@@ -170,7 +171,7 @@ P['index.html']=('Michael LaPenna | Author of the LaRosa Sisters','Michael LaPen
 
 <section class="band on-dark"><div class="wrap">
   <div class="sec-h"><p class="kicker">Reading order</p><h2>The series so far</h2></div>
-  <ol class="order">{''.join(f'<li><a href="books.html#{b["slug"]}">{cover(b)}<span class="no">Book {b["n"]}{(" · "+b["year"]) if b["year"] else ""}</span><b>{b["title"] if not b.get("ph") else "Title coming soon"}</b><span class="sm-t">{b["short"]}</span></a></li>' for b in BOOKS)}</ol>
+  <ol class="order">{''.join(f'<li><a href="books.html#{b["slug"]}">{cover(b)}<span class="no">Book {b["n"]}{(" · "+b["year"]) if b["year"] else (" · Expected 2027" if b.get("soon") else "")}</span><b>{b["title"] if not b.get("ph") else "Title coming soon"}</b><span class="sm-t">{b["short"]}</span></a></li>' for b in BOOKS)}</ol>
   <div class="center"><a class="btn gold" href="books.html">Explore the series</a></div>
 </div></section>
 
@@ -204,7 +205,7 @@ def bookrow(b):
     if b.get('quote'):
         qq=b['quote'];qb=f'<blockquote class="mini-q"><p>“{qq[0]}”</p><cite>{qq[1]}, {qq[2]}</cite></blockquote>'
     return f'''<article class="book" id="{b["slug"]}"><div class="cv-wrap">{cover(b)}</div><div>
-<span class="no">Book {b["n"]}{(" · "+b["year"]) if b["year"] else ""}</span><h2>{b["title"] if not b.get("ph") else "Title coming soon"}</h2><p class="meta">{b["pub"]}</p>
+<span class="no">Book {b["n"]}{(" · "+b["year"]) if b["year"] else (" · Expected 2027" if b.get("soon") else "")}</span><h2>{b["title"] if not b.get("ph") else "Title coming soon"}</h2><p class="meta">{b["pub"]}</p>
 <p>{b["sum"]}</p>{qb}
 <ul class="facts">{''.join(f'<li>{d}</li>' for d in b["details"])}</ul>{buys(b)}</div></article>'''
 P['books.html']=('Books | Michael LaPenna','The LaRosa Sisters books by Michael LaPenna in reading order, with links to buy each one.',f'''
@@ -213,7 +214,7 @@ P['books.html']=('Books | Michael LaPenna','The LaRosa Sisters books by Michael 
 <section class="band white glance-band"><div class="wrap">
   <h2 class="glance-h">At a glance</h2>
   <div class="tbl-wrap"><table class="glance"><thead><tr><th>Book</th><th>Published</th><th>Length</th><th>Reading age</th><th>Formats</th></tr></thead><tbody>
-  {''.join(f'<tr><td><a href="#{b["slug"]}"><i>{b["title"]}</i></a><span>Book {b["n"]}</span></td><td data-l="Published">{(b["year"]+", "+b["pub"]) if b["year"] else "Coming soon"}</td><td data-l="Length">{b["pages"]}</td><td data-l="Reading age">{b["age"]}</td><td data-l="Formats">{b["formats"]}</td></tr>' for b in BOOKS)}
+  {''.join(f'<tr><td><a href="#{b["slug"]}"><i>{b["title"]}</i></a><span>Book {b["n"]}</span></td><td data-l="Published">{(b["year"]+", "+b["pub"]) if b["year"] else ("Expected 2027" if b.get("soon") else "Coming soon")}</td><td data-l="Length">{b["pages"]}</td><td data-l="Reading age">{b["age"]}</td><td data-l="Formats">{b["formats"]}</td></tr>' for b in BOOKS)}
   </tbody></table></div>
 </div></section>
 <section class="wrap books">{''.join(bookrow(b) for b in BOOKS)}</section>
