@@ -6,7 +6,7 @@ CSSV=hashlib.sha1(open(os.path.join(R,'assets/site.css'),'rb').read()).hexdigest
 JSV=hashlib.sha1(open(os.path.join(R,'assets/site.js'),'rb').read()).hexdigest()[:8]
 NAV=[('index.html','Home'),('books.html','Books'),('visits.html','Visits'),('about.html','About'),('media.html','Media'),('contact.html','Contact')]
 AMZ='https://www.amazon.com/dp/'
-W3F_KEY='MICHAEL_WEB3FORMS_KEY'  # paste the Web3Forms access key here
+W3F_KEY='cb64777c-8b27-489a-93d0-ac578fdd586d'  # paste the Web3Forms access key here
 YT='POn3cG_RTKs'
 SPREAKER='https://www.spreaker.com/episode/episode-330-michael-lapenna-on-his-book-baby-jesus-is-missing-october-13-2026--75766588'
 
