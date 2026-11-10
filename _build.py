@@ -190,7 +190,7 @@ P['index.html']=('Michael LaPenna | Author of the LaRosa Sisters','Michael LaPen
 </div></section>
 
 <section class="band on-dark cta-band"><div class="wrap cta-in">
-  <img class="cta-ph" src="assets/photos/reading-audience.jpg" width="996" height="668" alt="Children seated together, listening to a story" loading="lazy">
+  <img class="cta-ph" src="assets/photos/book-signing.jpg" width="996" height="668" alt="An author signing a book at a table" loading="lazy">
   <div class="cta-txt"><h2>Interested in hosting a reading or signing?</h2><p>Share a little about your venue, your readers, and the dates you have in mind.</p><a class="btn" href="contact.html?topic=visit">Invite Michael</a></div>
 </div></section>''')
 
