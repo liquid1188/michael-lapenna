@@ -58,13 +58,33 @@ VISITS=[
  ('store','visit-bookstores-5.jpg','A display table of new books in a Barnes and Noble store','Bookstores','In-store readings and book signings for local readers.'),
 ]
 
-BASE='https://liquid1188.github.io/michael-lapenna/'
+BASE='https://michaellapenna.com/'
 def ld(fname):
-    person={"@type":"Person","@id":BASE+"#michael","name":"Michael LaPenna","jobTitle":"Author","url":BASE,"image":BASE+"assets/michael-lapenna.jpg","alumniOf":[{"@type":"CollegeOrUniversity","name":"Colby College"},{"@type":"CollegeOrUniversity","name":"Salem State University"}]}
-    if fname=='books.html':
-        g=[person]+[{"@type":"Book","name":b['title'].replace('’',"'"),"author":{"@id":BASE+"#michael"},"isbn":b["isbn"],"datePublished":b['year'],"publisher":{"@type":"Organization","name":b['pub']},"image":BASE+b["src"],"bookFormat":"https://schema.org/Paperback" if 'Hardcover' not in b['details'][0] else "https://schema.org/Hardcover"} for b in PUB if b["isbn"]]
-    else: g=[person]
-    return '<script type="application/ld+json">'+_json.dumps({"@context":"https://schema.org","@graph":g})+'</script>'
+    person={"@type":"Person","@id":BASE+"#michael","name":"Michael LaPenna","jobTitle":"Children's author","description":"Author of the LaRosa Sisters, Catholic mystery and adventure books for young readers, and a former high school English teacher.","url":BASE,"image":BASE+S["about"]["photo"],
+      "alumniOf":[{"@type":"CollegeOrUniversity","name":"Colby College"},{"@type":"CollegeOrUniversity","name":"Salem State University"}],
+      "homeLocation":{"@type":"Place","name":"Greenville, South Carolina"},"knowsAbout":["Children's literature","Catholic fiction","Creative writing"]}
+    site={"@type":"WebSite","@id":BASE+"#site","url":BASE,"name":"Michael LaPenna","publisher":{"@id":BASE+"#michael"},"inLanguage":"en-US"}
+    series={"@type":"BookSeries","@id":BASE+"#series","name":"The LaRosa Sisters","author":{"@id":BASE+"#michael"},"url":BASE+"books.html"}
+    g=[person,site]
+    if fname in ('index.html','books.html'):
+        g.append(series)
+        for b in PUB:
+            bk={"@type":"Book","@id":BASE+"books.html#"+b["slug"],"url":BASE+"books.html#"+b["slug"],"name":strip(b["title"]).replace("’","'"),"author":{"@id":BASE+"#michael"},"isPartOf":{"@id":BASE+"#series"},"position":b["n"],
+                "datePublished":b["year"],"publisher":{"@type":"Organization","name":re.sub("<[^>]+>","",b["pub"])},"image":BASE+b["src"],"inLanguage":"en-US","genre":["Children's mystery","Catholic fiction"],
+                "description":re.sub("<[^>]+>","",b["sum"])}
+            if b["isbn"]: bk["isbn"]=b["isbn"]
+            m=re.match(r"(\d+)",b["pages"] or "")
+            if m: bk["numberOfPages"]=int(m.group(1))
+            if b["age"] and b["age"]!="—": bk["typicalAgeRange"]=b["age"].replace(" to ","-")
+            if b.get("quote"): bk["review"]={"@type":"Review","reviewBody":re.sub("<[^>]+>","",b["quote"][0]),"author":{"@type":"Person","name":re.sub("<[^>]+>","",b["quote"][1])}}
+            g.append(bk)
+    if fname=='about.html' and S.get("faq"):
+        g.append({"@type":"FAQPage","mainEntity":[{"@type":"Question","name":strip(x["q"]),"acceptedAnswer":{"@type":"Answer","text":strip(x.get("a",""))}} for x in S["faq"] if x.get("q")]})
+    if fname=='media.html':
+        for v in IV:
+            if v.get("youtube_id"):
+                g.append({"@type":"VideoObject","name":strip(v["title"])+" | "+v["show"],"description":strip(v["summary"]),"thumbnailUrl":f"https://i.ytimg.com/vi/{v['youtube_id']}/hqdefault.jpg","embedUrl":f"https://www.youtube-nocookie.com/embed/{v['youtube_id']}","uploadDate":"2026-10-13"})
+    return '<script type="application/ld+json">'+_json.dumps({"@context":"https://schema.org","@graph":g},ensure_ascii=False)+'</script>'
 
 def page(fname,title,desc,body):
     LD=ld(fname)
@@ -76,11 +96,17 @@ def page(fname,title,desc,body):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>try{{if(localStorage.getItem('ml-desktop')==='1')document.querySelector('meta[name=viewport]').setAttribute('content','width=1200')}}catch(e){{}}</script>
 <title>{title}</title>
+<link rel="canonical" href="https://michaellapenna.com/{'' if fname=='index.html' else fname}">
 <meta name="description" content="{desc}">
-<meta name="robots" content="noindex">
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
-<meta property="og:image" content="https://liquid1188.github.io/michael-lapenna/assets/og-card.jpg">
+<meta property="og:image" content="https://michaellapenna.com/assets/og-card.jpg">
+<meta property="og:type" content="{"website" if fname=="index.html" else "article"}">
+<meta property="og:url" content="https://michaellapenna.com/{"" if fname=="index.html" else fname}">
+<meta property="og:site_name" content="Michael LaPenna">
+<meta name="twitter:title" content="{title}">
+<meta name="twitter:description" content="{desc}">
+<meta name="twitter:image" content="https://michaellapenna.com/assets/og-card.jpg">
 <meta name="twitter:card" content="summary_large_image">
 {LD}
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
@@ -119,7 +145,7 @@ def buys(b,cls='sm'): return '' if not b['buy'] else '<div class="buy">'+''.join
 def visit_cards(): return '<div class="v-grid">'+''.join(f'<article class="v-card"><img class="v-ph" src="assets/photos/{ph}" alt="{alt}" loading="lazy" width="1000" height="640"><div class="v-body"><h3>{t}</h3><p>{d}</p><a class="v-go" href="contact.html?topic={"signing" if k=="store" else "visit"}">{"Ask about a signing" if k=="store" else "Request a visit"}</a></div></article>' for k,ph,alt,t,d in VISITS)+'</div>'
 
 P={}
-P['index.html']=('Michael LaPenna | Author of the LaRosa Sisters','Michael LaPenna is the author of the LaRosa Sisters, Catholic mysteries for young readers. He visits schools, libraries, book fairs, and bookstores.',f'''
+P['index.html']=('Michael LaPenna | The LaRosa Sisters Catholic Mysteries for Kids','Michael LaPenna writes the LaRosa Sisters, Catholic mysteries for readers ages 7 to 14, and visits schools, libraries, and bookstores in South Carolina and Florida.',f'''
 <section class="hero on-dark"><div class="wrap hero-in">
   <div class="hero-copy">
     <p class="kicker">The LaRosa Sisters · Mysteries and adventures for young readers</p>
@@ -202,7 +228,7 @@ def bookrow(b):
 <span class="no">{label(b)}</span><h2>{b["title"]}</h2><p class="meta">{b["pub"]}</p>
 <p>{b["sum"]}</p>{qb}
 <ul class="facts">{''.join(f'<li>{d}</li>' for d in b["details"])}</ul>{buys(b)}</div></article>'''
-P['books.html']=('Books | Michael LaPenna','The LaRosa Sisters books by Michael LaPenna in reading order, with links to buy each one.',f'''
+P['books.html']=('The LaRosa Sisters Books in Order | Michael LaPenna','All the LaRosa Sisters books in reading order, from Baby Jesus Is Missing to Laura’s Locker, with summaries, reading ages, and where to buy each one.',f'''
 <section class="page-h on-dark"><div class="wrap"><p class="kicker">Books</p><h1>The LaRosa Sisters</h1><p class="lede">From a missing Nativity figure to a difficult choice at school, each LaRosa Sisters book brings Catherine and Susanna Mae a new adventure. Explore the stories in reading order.</p>
 <ol class="jump">{''.join(f'<li><a href="#{b["slug"]}"><span>{b["n"]}</span>{b["title"]}</a></li>' for b in BOOKS)}</ol></div></section>
 <section class="band white glance-band"><div class="wrap">
@@ -217,7 +243,7 @@ P['books.html']=('Books | Michael LaPenna','The LaRosa Sisters books by Michael 
   <div><h2>Where to begin</h2><p>The first books are shorter, with longer and more complex stories as the series progresses. Readers can begin with <i>Baby Jesus Is Missing</i> and follow Catherine and Susanna Mae as they grow.</p></div>
 </div></section>''')
 
-P['visits.html']=('School Visits, Readings and Signings | Michael LaPenna','Invite Michael LaPenna for a reading at your school, library, or book fair, or a signing at your bookstore.',f'''
+P['visits.html']=('Author Visits, Writing Workshops and Signings | Michael LaPenna','Invite children’s author Michael LaPenna for a school or library reading, a creative writing workshop, or a bookstore signing in the Greenville, SC and Fort Lauderdale, FL areas.',f'''
 <section class="page-h on-dark"><div class="wrap"><p class="kicker">Visits</p><h1>Author visits, workshops, and signings</h1><p class="lede">After 34 years in the classroom, Michael enjoys sharing stories with young readers. His author events include readings at schools, libraries, and book fairs, creative writing workshops for students, and bookstore signings.</p>
 <div class="ctas"><a class="btn" href="contact.html?topic=visit">Invite Michael</a></div></div></section>
 <section class="band white"><div class="wrap">{visit_cards()}</div></section>
@@ -246,7 +272,7 @@ P['visits.html']=('School Visits, Readings and Signings | Michael LaPenna','Invi
   <div class="center"><a class="btn" href="contact.html?topic=visit">Send a visit request</a></div>
 </div></section>''')
 
-P['about.html']=('About | Michael LaPenna','About Michael LaPenna, retired high school English teacher and author of the LaRosa Sisters series.',f'''
+P['about.html']=('About Michael LaPenna | Children’s Author and Former English Teacher','Michael LaPenna taught high school English for 34 years north of Boston before writing the LaRosa Sisters mysteries for young readers.',f'''
 <section class="page-h on-dark"><div class="wrap"><p class="kicker">About</p><h1>Michael LaPenna</h1></div></section>
 <section class="band paper"><div class="wrap two about">
   <figure><img class="portrait" src="{S["about"]["photo"]}" width="573" height="720" alt="Michael LaPenna"></figure>
@@ -257,7 +283,7 @@ P['about.html']=('About | Michael LaPenna','About Michael LaPenna, retired high 
 {(f'<section class="band white why"><div class="wrap narrow prose"><p class="kicker dark">In his words</p><h2>Why I write</h2>'+''.join(f'<p>{md(t)}</p>' for t in S.get("why_i_write",[]))+'</div></section>') if S.get("why_i_write") else ""}
 {(f'<section class="band paper faq"><div class="wrap narrow"><p class="kicker dark">Questions</p><h2>Frequently asked questions</h2>'+''.join(f'<details class="qa"><summary>{md(x["q"])}</summary><div class="prose">'+''.join(f'<p>{md(t)}</p>' for t in (x.get("a") or "").split("\n\n") if t.strip())+'</div></details>' for x in S.get("faq",[]) if x.get("q"))+'</div></section>') if S.get("faq") else ""}''')
 
-P['media.html']=('Media | Michael LaPenna','Interviews with Michael LaPenna and a press kit with cover images, author photo, and short bio.',f'''
+P['media.html']=('Interviews and Press Kit | Michael LaPenna','Radio interviews with author Michael LaPenna and a press kit with his author photo, book covers, endorsements, and short bio.',f'''
 <section class="page-h on-dark"><div class="wrap"><p class="kicker">Media</p><h1>Interviews and media resources</h1></div></section>
 {''.join(f'''<section class="band white"><div class="wrap two media-item">
   {video(v)}
@@ -282,7 +308,7 @@ P['media.html']=('Media | Michael LaPenna','Interviews with Michael LaPenna and 
   </div>
 </div></section>''')
 
-P['contact.html']=('Contact | Michael LaPenna','Invite Michael LaPenna to your school, library, book fair, or bookstore, or send a note.',f'''
+P['contact.html']=('Contact Michael LaPenna | Book an Author Visit','Contact Michael LaPenna to plan a school visit, library reading, writing workshop, or bookstore signing, or to send a note about the LaRosa Sisters books.',f'''
 <section class="page-h on-dark"><div class="wrap"><p class="kicker">Contact</p><h1>Get in touch</h1><p class="lede">Have a question about the books or an idea for a reading, signing, or interview? This page is for inquiries about Michael and the LaRosa Sisters series.</p></div></section>
 <section class="band paper"><div class="wrap contact">
   <form id="cform" class="form" action="https://api.web3forms.com/submit" method="POST">
@@ -307,4 +333,5 @@ P['contact.html']=('Contact | Michael LaPenna','Invite Michael LaPenna to your s
 
 for f,(t,d,b) in P.items():
     open(os.path.join(R,f),'w').write(page(f,t,d,b))
+open(os.path.join(R,'sitemap.xml'),'w').write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+''.join(f'<url><loc>https://michaellapenna.com/{"" if f=="index.html" else f}</loc></url>' for f in P)+'</urlset>\n')
 print('built',len(P))

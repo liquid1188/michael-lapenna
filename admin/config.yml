@@ -6,9 +6,9 @@ backend:
     update: "Update {{collection}}"
 media_folder: assets/uploads
 public_folder: assets/uploads
-site_url: https://liquid1188.github.io/michael-lapenna/
-display_url: https://liquid1188.github.io/michael-lapenna/
-logo_url: https://liquid1188.github.io/michael-lapenna/assets/michael-lapenna.jpg
+site_url: https://michaellapenna.com/
+display_url: https://michaellapenna.com/
+logo_url: https://michaellapenna.com/assets/michael-lapenna.jpg
 
 collections:
 
