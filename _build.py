@@ -14,6 +14,7 @@ BOOKS=[
   details=['Hardcover, 44 pages','Paperback and Kindle','Illustrated by Chris Jackson','Reading age 7 to 12'],
   cover='cover-baby-jesus-is-missing.jpg',w=700,h=1144,
   sum='Early in December, Nativity figures begin disappearing across Reedy River. When a $500 reward is offered for catching the thief, Catherine and Susanna Mae decide to investigate. What begins as a Christmas mystery soon becomes a test of their judgment.',
+  quote=('One mark of a good children’s book is that it delights adults as well. I found <i>Baby Jesus Is Missing</i> to be such a book. Author Michael LaPenna introduces us to sisters Catherine and Susanna Mae as they solve the local town crime of the stolen baby Jesus figurines while also introducing us to the slang of the criminal and detective world in hilarious jaunts of language. The girls soon discover that one’s vocation, even crime solving, requires faith, virtue, and sacrifice. This is a fun faith-filled teaching story, full of surprises, and part of a book series that helps us all find the Baby Jesus and keep him in our lives.','Kiki Latimer','Catholic author and host of <i>The Catholic Bookworm</i>'),
   buy=[('Hardcover',AMZ+'1620209330'),('Paperback',AMZ+'1649601468'),('Kindle',AMZ+'B08PBYHGYH'),('Barnes &amp; Noble','https://www.barnesandnoble.com/w/baby-jesus-is-missing-michael-lapenna/1138393399?ean=9781620209332'),('Publisher','https://ambassador-international.com/books/baby-jesus-is-missing/')]),
  dict(n=2,slug='the-offering',pages='61 pages',age='7 to 12',formats='Paperback, Hardcover, Kindle',title='The Offering',short='A mountain adventure',pub='Ambassador International',year='2023',
   details=['Paperback, 61 pages','Hardcover and Kindle','Reading age 7 to 12'],
@@ -29,7 +30,7 @@ BOOKS=[
   details=['Paperback, 191 pages','Kindle and Audible','Reading age 7 to 12'],
   cover='cover-lauras-locker.jpg',w=666,h=1000,
   sum='Susanna Mae sees a classmate framed for cheating. She knows what happened, but speaking up could cost her a friendship. During a visit to her grandparents in Gloucester, Massachusetts, she encounters mysterious woods and old legends. Back at school, the harder challenge remains.',
-  quote=('Michael LaPenna invites young readers into a compelling encounter with conscience, courage, and grace. Laura’s Locker reveals how faith strengthens the heart to confront injustice, embrace truth, and discover the healing power of authentic friendship.','Dr. Sebastian Mahfood, OP','author of <i>The Narrative Spirituality of Dante’s Divine Comedy</i>'),
+  quote=('Michael LaPenna invites young readers into a compelling encounter with conscience, courage, and grace. <i>Laura’s Locker</i> reveals how faith strengthens the heart to confront injustice, embrace truth, and discover the healing power of authentic friendship.','Dr. Sebastian Mahfood, OP','author of <i>The Narrative Spirituality of Dante’s Divine Comedy</i>'),
   buy=[('Paperback',AMZ+'B0HPS6LFQ8'),('Kindle',AMZ+'B0HMDQLXDR'),('Audible','https://www.audible.com/pd/Audiobook/B0HL6SZ6DQ'),('Publisher','https://enroutebooksandmedia.com/lauraslocker/')]),
 ]
 BOOKS[3]['n']=5
@@ -37,7 +38,7 @@ PLACE=dict(n=4,slug='haddies-locket',pages='75 pages',age='7 to 12',formats='Pap
   details=['Paperback, 75 pages','Reading age 7 to 12'],
   cover='cover-haddies-locket.jpg',w=700,h=1119,
   sum='When the girls’ great-grandmother Haddie comes to visit, Catherine borrows her locket while Haddie is away on a short trip, and the locket goes missing. It is the last keepsake Haddie has of her late husband. Catherine dreads telling her, until an old map leads to an adventure and a possible way to make things right.',
-  buy=[('Amazon',AMZ+'B0GCJK65KQ')])
+  buy=[('Paperback',AMZ+'B0GCJK65KQ')])
 BOOKS=BOOKS[:3]+[PLACE]+BOOKS[3:]
 PUB=BOOKS[:]
 L=BOOKS[4]
@@ -161,8 +162,9 @@ P['index.html']=('Michael LaPenna | Author of the LaRosa Sisters','Michael LaPen
   <figure class="intro-ph"><img src="assets/photos/woods-path.jpg" width="960" height="640" alt="A misty path leading into the woods" loading="lazy"></figure>
 </div></section>
 
-<section class="band quote-band"><div class="wrap">
-  <blockquote class="big-q"><p>“{q[0]}”</p><cite><b>{q[1]}</b>, {q[2]}</cite></blockquote>
+<section class="band quote-band"><div class="wrap q-pair">
+  <blockquote class="big-q"><span class="q-on">On <i>Baby Jesus Is Missing</i></span><p>“One mark of a good children’s book is that it delights adults as well. I found <i>Baby Jesus Is Missing</i> to be such a book. … This is a fun faith-filled teaching story, full of surprises.”</p><cite><b>Kiki Latimer</b>, Catholic author and host of <i>The Catholic Bookworm</i></cite></blockquote>
+  <blockquote class="big-q"><span class="q-on">On <i>Laura’s Locker</i></span><p>“{q[0]}”</p><cite><b>{q[1]}</b>, {q[2]}</cite></blockquote>
 </div></section>
 
 <section class="band on-dark"><div class="wrap">
@@ -210,7 +212,7 @@ P['books.html']=('Books | Michael LaPenna','The LaRosa Sisters books by Michael 
 <section class="band white glance-band"><div class="wrap">
   <h2 class="glance-h">At a glance</h2>
   <div class="tbl-wrap"><table class="glance"><thead><tr><th>Book</th><th>Published</th><th>Length</th><th>Reading age</th><th>Formats</th></tr></thead><tbody>
-  {''.join(f'<tr><td><a href="#{b["slug"]}"><i>{b["title"]}</i></a><span>Book {b["n"]}</span></td><td>{(b["year"]+", "+b["pub"]) if b["year"] else "Coming soon"}</td><td>{b["pages"]}</td><td>{b["age"]}</td><td>{b["formats"]}</td></tr>' for b in BOOKS)}
+  {''.join(f'<tr><td><a href="#{b["slug"]}"><i>{b["title"]}</i></a><span>Book {b["n"]}</span></td><td data-l="Published">{(b["year"]+", "+b["pub"]) if b["year"] else "Coming soon"}</td><td data-l="Length">{b["pages"]}</td><td data-l="Reading age">{b["age"]}</td><td data-l="Formats">{b["formats"]}</td></tr>' for b in BOOKS)}
   </tbody></table></div>
 </div></section>
 <section class="wrap books">{''.join(bookrow(b) for b in BOOKS)}</section>

@@ -363,3 +363,21 @@ footer{border-top:3px solid var(--gold)}
 @media (max-width:900px){.order{grid-template-columns:repeat(2,1fr)}}
 .kit-covers{align-items:start}
 .kit-covers .kit-img img{width:100%;height:auto;aspect-ratio:5/8;object-fit:cover;display:block}
+/* mobile: glance table as stacked cards; center lone last cover in series grid */
+@media (max-width:700px){
+  .glance{min-width:0;font-size:15px}
+  .glance thead{display:none}
+  .glance,.glance tbody,.glance tr,.glance td{display:block;width:100%}
+  .glance tr{padding:14px 16px;border-bottom:1px solid var(--rule)}
+  .glance tr:last-child{border-bottom:0}
+  .glance td{padding:3px 0;border:0;display:flex;gap:12px}
+  .glance td:first-child{display:block;padding-bottom:8px}
+  .glance td[data-l]:before{content:attr(data-l);flex:0 0 96px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);font-weight:700;padding-top:2px}
+}
+@media (max-width:900px){.order li:last-child:nth-child(odd){grid-column:1/-1;justify-self:center;width:calc(50% - 9px)}}
+.q-pair{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.q-pair .big-q{max-width:none}
+.q-pair .big-q p{font-size:clamp(19px,1.7vw,23px)}
+.q-on{display:block;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--brick);font-weight:700;margin-bottom:14px}
+.q-on i{text-transform:none;letter-spacing:.02em;font-size:14px}
+@media (max-width:800px){.q-pair{grid-template-columns:1fr;gap:44px}.q-pair .big-q+.big-q{padding-top:40px;border-top:1px solid var(--rule)}}
