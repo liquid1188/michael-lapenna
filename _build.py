@@ -232,7 +232,7 @@ P['visits.html']=('School Visits, Readings and Signings | Michael LaPenna','Invi
   <figure class="ws-ph"><img src="assets/photos/writing-workshop.jpg" width="1000" height="640" alt="Students writing at their desks in a classroom" loading="lazy"></figure>
   <div class="prose"><p class="kicker dark">For schools</p><h2>Creative writing workshops</h2>
     <p>Along with readings, Michael leads creative writing workshops for students, drawing on his 34 years of teaching English.</p>
-    <p>He has read at St. Mary’s School in Greenville on several occasions and has also led creative writing workshops for young writers. A workshop can be planned on its own or as part of a school visit.</p>
+    <p>He has read at St. Mary’s School in Greenville on several occasions and has also led creative writing workshops for students there. A workshop can be planned on its own or as part of a school visit.</p>
     <a class="btn" href="contact.html?topic=workshop">Ask about a workshop</a>
   </div>
 </div></section>
