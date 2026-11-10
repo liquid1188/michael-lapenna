@@ -72,7 +72,7 @@ def ld(fname):
 
 def page(fname,title,desc,body):
     LD=ld(fname)
-    nav=''.join(f'<li><a href="{h}"{" aria-current=\"page\"" if h==fname else ""}>{t}</a></li>' for h,t in NAV)
+    nav=''.join(f'<li><a href="{h}"{" aria-current=\"page\"" if h==fname else ""}>{t}</a></li>' for h,t in NAV if h!='contact.html')
     return f'''<!DOCTYPE html>
 <html lang="en">
 <head>
