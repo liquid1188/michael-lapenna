@@ -381,3 +381,9 @@ footer{border-top:3px solid var(--gold)}
 .q-on{display:block;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--brick);font-weight:700;margin-bottom:14px}
 .q-on i{text-transform:none;letter-spacing:.02em;font-size:14px}
 @media (max-width:800px){.q-pair{grid-template-columns:1fr;gap:44px}.q-pair .big-q+.big-q{padding-top:40px;border-top:1px solid var(--rule)}}
+.age li{display:block;padding:0}
+.age li a{display:flex;gap:16px;align-items:center;padding:10px 0;text-decoration:none;color:inherit}
+.age li a b{color:var(--ink);transition:color .2s}
+.age li a:hover b{color:var(--brick)}
+.age li a:after{content:"→";margin-left:auto;color:var(--brick);opacity:.55;transition:opacity .2s,transform .2s}
+.age li a:hover:after{opacity:1;transform:translateX(3px)}

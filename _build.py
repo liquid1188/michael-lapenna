@@ -231,7 +231,7 @@ P['visits.html']=('School Visits, Readings and Signings | Michael LaPenna','Invi
     <ul class="ticks"><li>A reading from a LaRosa Sisters book suited to the audience</li><li>Time for readers to ask about the stories and characters</li><li>Book signing when copies are available</li></ul>
   </div>
   <div class="prose"><h2>Explore the books</h2>
-    <ul class="age">{''.join(f'<li>{cover(b,"cv xs")}<div><b><i>{b["title"]}</i></b><span>{b["short"]}</span></div></li>' for b in BOOKS)}</ul>
+    <ul class="age">{''.join(f'<li><a href="books.html#{b["slug"]}">{cover(b,"cv xs")}<div><b><i>{b["title"]}</i></b><span>{b["short"]}</span></div></a></li>' for b in BOOKS)}</ul>
     <p class="small">The books range from a short illustrated Christmas story to longer mysteries for growing readers.</p>
   </div>
 </div></section>
