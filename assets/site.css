@@ -397,3 +397,7 @@ footer{border-top:3px solid var(--gold)}
 .form-msg.ok{color:#2f6b3a;font-weight:600}
 .form-msg.err{color:var(--brick);font-weight:600}
 .prose h2.sub-h{margin-top:36px}
+.workshop{background:var(--cream);border-top:1px solid var(--rule)}
+.ws-grid{align-items:center;gap:56px}
+.ws-ph{margin:0}.ws-ph img{width:100%;height:auto;border-radius:3px;box-shadow:0 24px 50px -24px rgba(0,0,0,.45);display:block}
+.workshop .btn{margin-top:10px}

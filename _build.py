@@ -225,9 +225,17 @@ P['books.html']=('Books | Michael LaPenna','The LaRosa Sisters books by Michael 
 </div></section>''')
 
 P['visits.html']=('School Visits, Readings and Signings | Michael LaPenna','Invite Michael LaPenna for a reading at your school, library, or book fair, or a signing at your bookstore.',f'''
-<section class="page-h on-dark"><div class="wrap"><p class="kicker">Visits</p><h1>Author visits and book signings</h1><p class="lede">After 34 years in the classroom, Michael enjoys sharing stories with young readers. His author events include readings at schools, libraries, and book fairs, as well as bookstore signings.</p>
+<section class="page-h on-dark"><div class="wrap"><p class="kicker">Visits</p><h1>Author visits, workshops, and signings</h1><p class="lede">After 34 years in the classroom, Michael enjoys sharing stories with young readers. His author events include readings at schools, libraries, and book fairs, creative writing workshops for students, and bookstore signings.</p>
 <div class="ctas"><a class="btn" href="contact.html?topic=visit">Invite Michael</a></div></div></section>
 <section class="band white"><div class="wrap">{visit_cards()}</div></section>
+<section class="band cream workshop" id="workshops"><div class="wrap two ws-grid">
+  <figure class="ws-ph"><img src="assets/photos/writing-workshop.jpg" width="1000" height="640" alt="Students writing at their desks in a classroom" loading="lazy"></figure>
+  <div class="prose"><p class="kicker dark">For schools</p><h2>Creative writing workshops</h2>
+    <p>Along with readings, Michael leads creative writing workshops for students, drawing on his 34 years of teaching English.</p>
+    <p>He has read at St. Mary’s School in Greenville on several occasions and has also led creative writing workshops for young writers. A workshop can be planned on its own or as part of a school visit.</p>
+    <a class="btn" href="contact.html?topic=workshop">Ask about a workshop</a>
+  </div>
+</div></section>
 <section class="band paper"><div class="wrap two visit-detail">
   <div class="prose"><h2>What to expect</h2>
     <ul class="ticks"><li>A reading from a LaRosa Sisters book suited to the audience</li><li>Time for readers to ask about the stories and characters</li><li>Book signing when copies are available</li></ul>
@@ -295,7 +303,7 @@ P['contact.html']=('Contact | Michael LaPenna','Invite Michael LaPenna to your s
     <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off">
     <div class="f2"><label>Name<input name="name" required autocomplete="name"></label>
     <label>Email<input type="email" name="email" required autocomplete="email"></label></div>
-    <label>Reason for your message<select name="topic" id="topic"><option value="visit">A school, library, or book fair visit</option><option value="signing">A bookstore signing</option><option>A question about the books</option><option>A note from a reader</option><option>Something else</option></select></label>
+    <label>Reason for your message<select name="topic" id="topic"><option value="visit">A school, library, or book fair visit</option><option value="workshop">A creative writing workshop</option><option value="signing">A bookstore signing</option><option>A question about the books</option><option>A note from a reader</option><option>Something else</option></select></label>
     <div class="visit-only f2"><label>School, library, or store<input name="organization" autocomplete="organization"></label>
     <label>City and state<input name="location"></label>
     <label>Preferred dates<input name="dates"></label>
