@@ -40,6 +40,9 @@ def ivbtns(v,ghost='ghost'):
     o=''
     if v.get('youtube_id'): o+=f'<a class="btn sm" href="https://www.youtube.com/watch?v={v["youtube_id"]}" target="_blank" rel="noopener">Watch on YouTube</a>'
     if v.get('listen_url'): o+=f'<a class="btn sm {ghost if o else ""}" href="{v["listen_url"]}" target="_blank" rel="noopener">Listen to the episode</a>'
+    if v.get('article'):
+        a=next((x for x in S.get('articles',[]) if x.get('slug')==v['article']),None)
+        if a: o+=f'<a class="btn sm {ghost if o else ""}" href="{a["slug"]}.html">Read the {_html.escape(a.get("date",""))} article</a>'
     return f'<div class="buy">{o}</div>' if o else ''
 SPREAKER=(FI or {}).get('listen_url') or 'https://www.spreaker.com/'
 def label(b): return f'Book {b["n"]}'+((" · "+b["year"]) if b["year"] else ((" · "+b["exp"]) if b["exp"] else ""))
@@ -331,6 +334,19 @@ P['contact.html']=('Contact Michael LaPenna | Book an Author Visit','Contact Mic
   </form>
   <aside class="c-side"><h2>Planning an event?</h2><p>Include your school, library, or bookstore name, the location, possible dates, and the ages or grades of your readers.</p><p>For interviews or event materials, visit the <a href="media.html">media page</a> for an author photograph, book covers, and a short biography.</p></aside>
 </div></section>''')
+
+# Articles about Michael, transcribed in full with the publisher's permission (content/site.json "articles")
+for a in S.get('articles',[]):
+    if not a.get('slug') or not a.get('text'): continue
+    paras=''.join(f'<p>{md(t.strip())}</p>' for t in a['text'].split('\n\n') if t.strip())
+    fig=(f'<figure class="art-fig"><img src="{a["image"]}" alt="{_html.escape(a.get("image_caption",""))}" loading="lazy"><figcaption>{md(a.get("image_caption",""))}</figcaption></figure>') if a.get('image') else ''
+    src=" · ".join(_html.escape(x) for x in [a.get("publication",""),a.get("date",""),a.get("pages","")] if x)
+    P[a['slug']+'.html']=(f'{strip(a["title"])}: {strip(a.get("subtitle",""))} | {a.get("publication","")}'.strip(' :|'),
+      f'{a.get("publication","")}, {a.get("date","")}: '+strip(a['text'].split('\n\n')[0])[:150],
+      f'''<section class="page-h on-dark"><div class="wrap narrow"><p class="kicker">{src}</p><h1>{md(a["title"])}{(" <em>"+md(a["subtitle"])+"</em>") if a.get("subtitle") else ""}</h1><p class="art-by">{md(a.get("byline",""))}</p></div></section>
+<section class="band white"><div class="wrap narrow prose article">{fig}{paras}
+<p class="art-credit">Reprinted from <em>{_html.escape(a.get("publication",""))}</em>, {_html.escape(a.get("date",""))}, with permission.</p>
+<p><a class="btn sm ghost" href="media.html">Back to interviews and media</a></p></div></section>''')
 
 for f,(t,d,b) in P.items():
     open(os.path.join(R,f),'w').write(page(f,t,d,b))

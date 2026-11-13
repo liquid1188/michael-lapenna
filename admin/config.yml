@@ -103,6 +103,7 @@ collections:
               - { name: summary, label: Description, widget: text }
               - { name: youtube_id, label: YouTube video ID, required: false, hint: "The letters after watch?v= in a YouTube link." }
               - { name: listen_url, label: Listen link, required: false }
+              - { name: article, label: Article, required: false, hint: "Page name of a transcribed article below, to add a Read the article button." }
               - { name: featured, label: Show on the home page, widget: boolean, default: false, hint: "Needs a YouTube video. Turn it on for one interview only." }
           - name: why_i_write
             label: Why I write (About page)
@@ -110,6 +111,24 @@ collections:
             required: false
             hint: "Each item is a paragraph. The section appears on the About page once you add one."
             field: { name: p, label: Paragraph, widget: text }
+          - name: articles
+            label: Articles about Michael (each gets its own page)
+            label_singular: Article
+            widget: list
+            required: false
+            summary: "{{fields.publication}} · {{fields.date}}"
+            hint: "To link an article from an interview card on the Media page, put its page name in that interview's Article field."
+            fields:
+              - { name: slug, label: Page name, hint: "Lowercase words joined by hyphens, for example north-main-neighbors-december-2022" }
+              - { name: publication, label: Publication }
+              - { name: date, label: Issue date }
+              - { name: pages, label: Pages, required: false }
+              - { name: title, label: Headline }
+              - { name: subtitle, label: Subheadline, required: false }
+              - { name: byline, label: Byline, required: false }
+              - { name: image, label: Photo, widget: image, required: false }
+              - { name: image_caption, label: Photo caption, required: false }
+              - { name: text, label: Article text, widget: text, hint: "Leave a blank line between paragraphs." }
           - name: faq
             label: Frequently asked questions (About page)
             label_singular: Question
