@@ -35,11 +35,15 @@ W3F_KEY=S['contact'].get('web3forms_key') or 'MICHAEL_WEB3FORMS_KEY'
 W3F_LIVE=bool(S['contact'].get('form_on'))
 IV=S.get('interviews',[])
 FI=next((v for v in IV if v.get('featured') and v.get('youtube_id')),None)
-def video(v): return f'<div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/{v["youtube_id"]}" title="Michael LaPenna on {_html.escape(v["show"])}" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>'
+def audio(v):
+    m=re.search(r'(\d{6,})/?$', v.get('listen_url') or '')
+    if not m or 'spreaker.com' not in v.get('listen_url',''): return ''
+    return f'<div class="audio-frame"><iframe src="https://widget.spreaker.com/player?episode_id={m.group(1)}&theme=light&playlist=false&cover_image_url=&hide-download=false" title="Listen to Michael LaPenna on {_html.escape(v["show"])}" loading="lazy" allow="autoplay"></iframe></div>'
+def video(v): return f'<div class="media-stack"><div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/{v["youtube_id"]}?start=0&rel=0" title="Watch Michael LaPenna on {_html.escape(v["show"])}" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>{audio(v)}</div>'
 def ivbtns(v,ghost='ghost'):
     o=''
-    if v.get('youtube_id'): o+=f'<a class="btn sm" href="https://www.youtube.com/watch?v={v["youtube_id"]}" target="_blank" rel="noopener">Watch on YouTube</a>'
-    if v.get('listen_url'): o+=f'<a class="btn sm {ghost if o else ""}" href="{v["listen_url"]}" target="_blank" rel="noopener">Listen to the episode</a>'
+    if v.get('youtube_id'): o+=f'<a class="btn sm" href="https://www.youtube.com/watch?v={v["youtube_id"]}&t=0s" target="_blank" rel="noopener">Watch the video</a>'
+    if v.get('listen_url'): o+=f'<a class="btn sm " href="{v["listen_url"]}" target="_blank" rel="noopener">Listen to the audio</a>'
     if v.get('article'):
         a=next((x for x in S.get('articles',[]) if x.get('slug')==v['article']),None)
         if a: o+=f'<a class="btn sm {ghost if o else ""}" href="{a["slug"]}.html">Read the {_html.escape(a.get("date",""))} article</a>'
